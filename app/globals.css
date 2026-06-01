@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Manual animation definitions to replace tw-animate-css */
+@keyframes enter {
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
+      scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1))
+      rotate(var(--tw-enter-rotate, 0));
+  }
+}
+
+@keyframes exit {
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0)
+      scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1))
+      rotate(var(--tw-exit-rotate, 0));
+  }
+}
+
+.animate-in {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-rotate: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+}
+
+.animate-out {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-rotate: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+}
+
+.fade-in-0 {
+  --tw-enter-opacity: 0;
+}
+.fade-out-0 {
+  --tw-exit-opacity: 0;
+}
+
+.zoom-in-95 {
+  --tw-enter-scale: 0.95;
+}
+.zoom-out-95 {
+  --tw-exit-scale: 0.95;
+}
+
+.slide-in-from-top {
+  --tw-enter-translate-y: -100%;
+}
+.slide-in-from-bottom {
+  --tw-enter-translate-y: 100%;
+}
+.slide-in-from-left {
+  --tw-enter-translate-x: -100%;
+}
+.slide-in-from-right {
+  --tw-enter-translate-x: 100%;
+}
+
+.slide-out-to-top {
+  --tw-exit-translate-y: -100%;
+}
+.slide-out-to-bottom {
+  --tw-exit-translate-y: 100%;
+}
+.slide-out-to-left {
+  --tw-exit-translate-x: -100%;
+}
+.slide-out-to-right {
+  --tw-exit-translate-x: 100%;
+}
+
+.slide-in-from-top-\[48\%\] {
+  --tw-enter-translate-y: -48%;
+}
+.slide-out-to-top-\[48\%\] {
+  --tw-exit-translate-y: -48%;
+}
+.slide-in-from-left-1\/2 {
+  --tw-enter-translate-x: -50%;
+}
+.slide-out-to-left-1\/2 {
+  --tw-exit-translate-x: -50%;
+}
+
+:root {
+  --background: #F8F9FB;
+  --foreground: #0d2935;
+  --card: oklch(1 0 0);
+  --card-foreground: #0d2935;
+  --popover: oklch(1 0 0);
+  --popover-foreground: #0d2935;
+  --primary: #005c73;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: #eaf5f7;
+  --secondary-foreground: #005c73;
+  --muted: #eef3f4;
+  --muted-foreground: #6d7e86;
+  --accent: #eaf5f7;
+  --accent-foreground: #0d2935;
+  --destructive: #d9534f;
+  --destructive-foreground: oklch(1 0 0);
+  --border: #dce5e9;
+  --input: oklch(1 0 0);
+  --ring: #8bc2cc;
+  --chart-1: #005c73;
+  --chart-2: #3a8294;
+  --chart-3: #75a8b5;
+  --chart-4: #afced6;
+  --chart-5: #eaf5f7;
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0d2935;
+  --sidebar-primary: #005c73;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eaf5f7;
+  --sidebar-accent-foreground: #0d2935;
+  --sidebar-border: #dce5e9;
+  --sidebar-ring: #8bc2cc;
+
+  --success: #0d7c66;
+  --success-foreground: #ffffff;
+  --success-muted: #e6f4f1;
+  --success-muted-foreground: #0d7c66;
+
+  --warning: #b8860b;
+  --warning-foreground: #ffffff;
+  --warning-muted: #fef9e7;
+  --warning-muted-foreground: #92400e;
+
+  --info: #005c73;
+  --info-foreground: #ffffff;
+  --info-muted: #eaf5f7;
+  --info-muted-foreground: #005c73;
+
+  --error: #dc2626;
+  --error-foreground: #ffffff;
+  --error-muted: #fef2f2;
+  --error-muted-foreground: #dc2626;
+
+  --neutral: #6d7e86;
+  --neutral-foreground: #ffffff;
+  --neutral-muted: #eef3f4;
+  --neutral-muted-foreground: #4a5568;
+
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
+
+  /* Affiliate theming - these are overridden by affiliate.config.ts */
+  --affiliate-primary: var(--primary);
+  --affiliate-primary-hover: #004d5f;
+  --affiliate-secondary: var(--secondary);
+  --affiliate-secondary-light: #f5fafb;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.371 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.275 0 0);
+  --input: oklch(0.325 0 0);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.81 0.1 252);
+  --chart-2: oklch(0.62 0.19 260);
+  --chart-3: oklch(0.55 0.22 263);
+  --chart-4: oklch(0.49 0.22 264);
+  --chart-5: oklch(0.42 0.18 266);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.275 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --success-muted: oklch(0.269 0.05 160);
+  --success-muted-foreground: #34d399;
+
+  --warning: #f59e0b;
+  --warning-foreground: #000000;
+  --warning-muted: oklch(0.269 0.05 80);
+  --warning-muted-foreground: #fbbf24;
+
+  --info: #3b82f6;
+  --info-foreground: #ffffff;
+  --info-muted: oklch(0.269 0.05 250);
+  --info-muted-foreground: #60a5fa;
+
+  --error: #f44336;
+  --error-foreground: #ffffff;
+  --error-muted: oklch(0.269 0.05 10);
+  --error-muted-foreground: #f87171;
+
+  --neutral: #9ca3af;
+  --neutral-foreground: #000000;
+  --neutral-muted: oklch(0.269 0 0);
+  --neutral-muted-foreground: #d1d5db;
+
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
+}
+
+@theme inline {
+  --font-sans: var(--v0-font-geist);
+  --font-serif: var(--v0-font-source-serif-4);
+  --font-mono: var(--v0-font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-muted-foreground: var(--warning-muted-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-info-muted-foreground: var(--info-muted-foreground);
+
+  --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
+  --color-neutral-muted: var(--neutral-muted);
+  --color-neutral-muted-foreground: var(--neutral-muted-foreground);
+
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-error-muted: var(--error-muted);
+  --color-error-muted-foreground: var(--error-muted-foreground);
+
+  --shadow-2xs: var(--shadow-x) var(--shadow-y)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-md: calc(var(--shadow-x) * 2) calc(var(--shadow-y) * 2) calc(var(--shadow-blur) * 3)
+    calc(var(--shadow-spread) - 1px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-lg: calc(var(--shadow-x) * 4) calc(var(--shadow-y) * 4) calc(var(--shadow-blur) * 5)
+    calc(var(--shadow-spread) - 3px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-xl: calc(var(--shadow-x) * 6) calc(var(--shadow-y) * 6) calc(var(--shadow-blur) * 7)
+    calc(var(--shadow-spread) - 5px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+  --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px))
+    calc(var(--shadow-spread) - 12px)
+    color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
+  --shadow: var(--shadow-md);
+  --color-shadow-color: var(--shadow-color);
+  --shadow-opacity: var(--shadow-opacity);
+  --shadow-spread: var(--shadow-spread);
+  --shadow-blur: var(--shadow-blur);
+  --shadow-y: var(--shadow-y);
+  --shadow-x: var(--shadow-x);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
