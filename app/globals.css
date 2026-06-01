@@ -95,64 +95,65 @@
 }
 
 :root {
+  /* EDEKA Brand Colors */
   --background: #F8F9FB;
-  --foreground: #0d2935;
+  --foreground: #1a1a1a;
   --card: oklch(1 0 0);
-  --card-foreground: #0d2935;
+  --card-foreground: #1a1a1a;
   --popover: oklch(1 0 0);
-  --popover-foreground: #0d2935;
-  --primary: #005c73;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: #eaf5f7;
-  --secondary-foreground: #005c73;
-  --muted: #eef3f4;
-  --muted-foreground: #6d7e86;
-  --accent: #eaf5f7;
-  --accent-foreground: #0d2935;
-  --destructive: #d9534f;
+  --popover-foreground: #1a1a1a;
+  --primary: #0F4386;
+  --primary-foreground: #ffffff;
+  --secondary: #FDDC3F;
+  --secondary-foreground: #0F4386;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #FFF8DC;
+  --accent-foreground: #0F4386;
+  --destructive: #dc2626;
   --destructive-foreground: oklch(1 0 0);
-  --border: #dce5e9;
+  --border: #e2e8f0;
   --input: oklch(1 0 0);
-  --ring: #8bc2cc;
-  --chart-1: #005c73;
-  --chart-2: #3a8294;
-  --chart-3: #75a8b5;
-  --chart-4: #afced6;
-  --chart-5: #eaf5f7;
+  --ring: #0F4386;
+  --chart-1: #0F4386;
+  --chart-2: #3b6ba8;
+  --chart-3: #6793ca;
+  --chart-4: #93bbec;
+  --chart-5: #FDDC3F;
   --radius: 0.5rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0d2935;
-  --sidebar-primary: #005c73;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #0F4386;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eaf5f7;
-  --sidebar-accent-foreground: #0d2935;
-  --sidebar-border: #dce5e9;
-  --sidebar-ring: #8bc2cc;
+  --sidebar-accent: #FFF8DC;
+  --sidebar-accent-foreground: #0F4386;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #0F4386;
 
-  --success: #0d7c66;
+  --success: #16a34a;
   --success-foreground: #ffffff;
-  --success-muted: #e6f4f1;
-  --success-muted-foreground: #0d7c66;
+  --success-muted: #dcfce7;
+  --success-muted-foreground: #16a34a;
 
-  --warning: #b8860b;
+  --warning: #ca8a04;
   --warning-foreground: #ffffff;
-  --warning-muted: #fef9e7;
-  --warning-muted-foreground: #92400e;
+  --warning-muted: #fef9c3;
+  --warning-muted-foreground: #a16207;
 
-  --info: #005c73;
+  --info: #0F4386;
   --info-foreground: #ffffff;
-  --info-muted: #eaf5f7;
-  --info-muted-foreground: #005c73;
+  --info-muted: #dbeafe;
+  --info-muted-foreground: #0F4386;
 
   --error: #dc2626;
   --error-foreground: #ffffff;
   --error-muted: #fef2f2;
   --error-muted-foreground: #dc2626;
 
-  --neutral: #6d7e86;
+  --neutral: #64748b;
   --neutral-foreground: #ffffff;
-  --neutral-muted: #eef3f4;
-  --neutral-muted-foreground: #4a5568;
+  --neutral-muted: #f1f5f9;
+  --neutral-muted-foreground: #475569;
 
   --shadow-x: 0px;
   --shadow-y: 1px;
@@ -161,11 +162,11 @@
   --shadow-opacity: 0.05;
   --shadow-color: #000000;
 
-  /* Affiliate theming - these are overridden by affiliate.config.ts */
-  --affiliate-primary: var(--primary);
-  --affiliate-primary-hover: #004d5f;
-  --affiliate-secondary: var(--secondary);
-  --affiliate-secondary-light: #f5fafb;
+  /* EDEKA brand colors */
+  --affiliate-primary: #0F4386;
+  --affiliate-primary-hover: #0a3266;
+  --affiliate-secondary: #FDDC3F;
+  --affiliate-secondary-light: #FFF8DC;
 }
 
 .dark {

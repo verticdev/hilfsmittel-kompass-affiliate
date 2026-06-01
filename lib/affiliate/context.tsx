@@ -16,8 +16,8 @@ const defaultConfig: AffiliateConfig = {
   partnerId: "edeka",
   partnerName: "EDEKA",
   logo: "/images/edeka-logo.png",
-  primaryColor: "#005c73",
-  secondaryColor: "#eaf5f7",
+  primaryColor: "#0F4386",
+  secondaryColor: "#FDDC3F",
 }
 
 const AffiliateContext = createContext<AffiliateConfig>(defaultConfig)
