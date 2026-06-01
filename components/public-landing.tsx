@@ -2,10 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, Heart, Shield, Home, Move, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ChevronRight, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
@@ -202,15 +201,13 @@ export function PublicLanding() {
                     className="w-full h-10 pl-9 pr-3 rounded-md sm:rounded-r-none border-0 bg-white text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-secondary outline-none text-sm"
                   />
                 </div>
-                <Button 
-                  className="h-10 bg-secondary text-primary hover:bg-secondary/90 font-semibold px-5 whitespace-nowrap rounded-md sm:rounded-l-none text-sm"
-                  asChild
-                >
-                  <Link href="#services">
-                    Beratung starten
-                    <ChevronRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </Button>
+                <Link 
+                href="#services"
+                className="inline-flex h-10 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-5 whitespace-nowrap rounded-md sm:rounded-l-none text-sm transition-colors"
+              >
+                Beratung starten
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
               </div>
               
               <div className="mt-6 mb-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-white/80">
@@ -375,16 +372,13 @@ export function PublicLanding() {
               Viele Leistungen stehen Ihnen zu - wir helfen Ihnen, diese zu beantragen. 
               Kostenlos und unverbindlich.
             </p>
-            <Button 
-              size="lg" 
-              className="mt-6 bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8"
-              asChild
+            <Link 
+              href="#services"
+              className="mt-6 inline-flex h-11 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8 rounded-lg transition-colors"
             >
-              <Link href="#services">
-                Jetzt Leistung auswählen
-                <ChevronRight className="w-5 h-5 ml-1" />
-              </Link>
-            </Button>
+              Jetzt Leistung auswählen
+              <ChevronRight className="w-5 h-5 ml-1" />
+            </Link>
           </div>
         </section>
       </main>
