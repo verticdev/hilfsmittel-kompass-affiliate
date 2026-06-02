@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import {
   ComposableMap,
@@ -31,14 +31,48 @@ const stateNameMap: Record<string, string> = {
   "Thüringen": "thueringen",
 }
 
+// Helper to generate a very light tint of a color (for map fill)
+function generateLightFill(hex: string): string {
+  const cleanHex = hex.replace("#", "")
+  const r = parseInt(cleanHex.slice(0, 2), 16)
+  const g = parseInt(cleanHex.slice(2, 4), 16)
+  const b = parseInt(cleanHex.slice(4, 6), 16)
+  
+  // Mix with white to create a very light tint (90% white, 10% primary)
+  const tintR = Math.round(r * 0.10 + 255 * 0.90)
+  const tintG = Math.round(g * 0.10 + 255 * 0.90)
+  const tintB = Math.round(b * 0.10 + 255 * 0.90)
+  
+  return `#${tintR.toString(16).padStart(2, "0")}${tintG.toString(16).padStart(2, "0")}${tintB.toString(16).padStart(2, "0")}`
+}
+
+// Helper to generate a medium tint for hover state
+function generateHoverFill(hex: string): string {
+  const cleanHex = hex.replace("#", "")
+  const r = parseInt(cleanHex.slice(0, 2), 16)
+  const g = parseInt(cleanHex.slice(2, 4), 16)
+  const b = parseInt(cleanHex.slice(4, 6), 16)
+  
+  // Mix with white to create a medium tint (75% white, 25% primary)
+  const tintR = Math.round(r * 0.25 + 255 * 0.75)
+  const tintG = Math.round(g * 0.25 + 255 * 0.75)
+  const tintB = Math.round(b * 0.25 + 255 * 0.75)
+  
+  return `#${tintR.toString(16).padStart(2, "0")}${tintG.toString(16).padStart(2, "0")}${tintB.toString(16).padStart(2, "0")}`
+}
+
 interface GermanyMapProps {
   primaryColor?: string
   secondaryColor?: string
 }
 
-export function GermanyMap({ primaryColor = "#0F4386", secondaryColor = "#FFD700" }: GermanyMapProps) {
+export function GermanyMap({ primaryColor = "#0F4386" }: GermanyMapProps) {
   const router = useRouter()
   const [hoveredState, setHoveredState] = useState<string | null>(null)
+  
+  // Generate colors based on primary color
+  const fillColor = useMemo(() => generateLightFill(primaryColor), [primaryColor])
+  const hoverColor = useMemo(() => generateHoverFill(primaryColor), [primaryColor])
 
   const handleStateClick = (stateName: string) => {
     const slug = stateNameMap[stateName] || stateName.toLowerCase().replace(/\s+/g, "-")
@@ -68,7 +102,6 @@ export function GermanyMap({ primaryColor = "#0F4386", secondaryColor = "#FFD700
           {({ geographies }) =>
             geographies.map((geo) => {
               const stateName = geo.properties.name || geo.properties.NAME_1 || geo.properties.GEN
-              const isHovered = hoveredState === stateName
               
               return (
                 <Geography
@@ -79,14 +112,14 @@ export function GermanyMap({ primaryColor = "#0F4386", secondaryColor = "#FFD700
                   onClick={() => handleStateClick(stateName)}
                   style={{
                     default: {
-                      fill: "#E8EEF4",
+                      fill: fillColor,
                       stroke: primaryColor,
                       strokeWidth: 0.8,
                       outline: "none",
                       cursor: "pointer",
                     },
                     hover: {
-                      fill: secondaryColor,
+                      fill: hoverColor,
                       stroke: primaryColor,
                       strokeWidth: 1.5,
                       outline: "none",
