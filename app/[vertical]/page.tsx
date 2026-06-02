@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 import { QuestionnaireRenderer } from "@/lib/questionnaire/questionnaire-renderer"
 import { questionnaireConfigs } from "@/lib/questionnaire/configs"
 import type { Metadata } from "next"
@@ -80,5 +81,20 @@ export default async function VerticalPage({ params }: PageProps) {
     notFound()
   }
 
-  return <QuestionnaireRenderer config={config} />
+  return (
+    <Suspense fallback={<QuestionnaireLoading />}>
+      <QuestionnaireRenderer config={config} />
+    </Suspense>
+  )
+}
+
+function QuestionnaireLoading() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-gray-600">Laden...</p>
+      </div>
+    </div>
+  )
 }
