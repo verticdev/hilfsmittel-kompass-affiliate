@@ -221,7 +221,7 @@ function SupportCarousel() {
       <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900">
             So unterstützen wir Sie
           </h2>
           <p className="mt-2 text-gray-600">
@@ -295,7 +295,7 @@ function SupportCarousel() {
                   <span className="text-sm font-medium">{currentSlide.label}</span>
                 </div>
                 
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
                   {currentSlide.headline}
                 </h3>
                 
@@ -419,7 +419,7 @@ export function PublicLanding() {
                 <span>Exklusiv für EDEKA-Kunden</span>
               </div>
               
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white text-balance">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-white text-balance">
                 Ihre Pflegeleistungen<br />
                 - <span className="text-secondary">einfach beantragt</span>
               </h1>
@@ -490,28 +490,28 @@ export function PublicLanding() {
                 <div className="flex justify-center mb-2">
                   <Users className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">10.000+</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">10.000+</div>
                 <div className="text-sm text-muted-foreground">Beratene Senioren</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <MapPin className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">250+</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">250+</div>
                 <div className="text-sm text-muted-foreground">Regionale Berater</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <Star className="w-6 h-6 text-secondary" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">4.9</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">4.9</div>
                 <div className="text-sm text-muted-foreground">Kundenbewertung</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <Shield className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">100%</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">100%</div>
                 <div className="text-sm text-muted-foreground">Kostenlose Beratung</div>
               </div>
             </div>
@@ -525,9 +525,9 @@ export function PublicLanding() {
         <section id="services" className="bg-primary scroll-mt-16">
           <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
             <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Welche Leistung interessiert Sie?
-              </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white">
+              Welche Leistung interessiert Sie?
+            </h2>
               <p className="mt-2 text-white/80">
                 Wählen Sie einen Bereich aus und erhalten Sie eine kostenlose, unverbindliche Beratung
               </p>
@@ -550,9 +550,9 @@ export function PublicLanding() {
         <section id="faq" className="bg-gray-50 border-t border-gray-200 scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Häufig gestellte Fragen
-              </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+              Häufig gestellte Fragen
+            </h2>
               <p className="mt-2 text-gray-600">
                 Antworten auf die wichtigsten Fragen rund um Pflegeleistungen
               </p>
@@ -624,7 +624,7 @@ export function PublicLanding() {
         {/* CTA Section */}
         <section className="bg-primary">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-xl md:text-2xl font-bold text-white">
               Nutzen Sie Ihre Pflegeleistungen voll aus
             </h2>
             <p className="mt-3 text-white/90 max-w-xl mx-auto">
