@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useAffiliateConfig, defaultConfig } from "@/lib/affiliate/context"
-import { ArrowLeft, RotateCcw, Copy, Check, ExternalLink, Palette, Building2, Image as ImageIcon } from "lucide-react"
+import { ArrowLeft, RotateCcw, Copy, Check, ExternalLink, Palette, Building2, Image as ImageIcon, Upload, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export default function ConfigPage() {
@@ -16,6 +16,8 @@ export default function ConfigPage() {
   const [secondaryColor, setSecondaryColor] = useState(config.secondaryColor)
   const [copied, setCopied] = useState(false)
   const [logoError, setLogoError] = useState(false)
+  const [isUploading, setIsUploading] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Sync local state when config changes (e.g., on reset)
   useEffect(() => {
@@ -34,6 +36,47 @@ export default function ConfigPage() {
     setLogoUrl(value)
     setLogoError(false)
     updateConfig({ logo: value })
+  }
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      setLogoError(true)
+      return
+    }
+
+    // Validate file size (max 2MB)
+    if (file.size > 2 * 1024 * 1024) {
+      setLogoError(true)
+      return
+    }
+
+    setIsUploading(true)
+    setLogoError(false)
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const base64 = e.target?.result as string
+      setLogoUrl(base64)
+      updateConfig({ logo: base64 })
+      setIsUploading(false)
+    }
+    reader.onerror = () => {
+      setLogoError(true)
+      setIsUploading(false)
+    }
+    reader.readAsDataURL(file)
+  }
+
+  const clearLogo = () => {
+    setLogoUrl("")
+    updateConfig({ logo: "" })
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
   }
 
   const handlePrimaryColorChange = (value: string) => {
@@ -139,27 +182,84 @@ export default function ConfigPage() {
               />
             </div>
 
-            {/* Logo URL */}
+            {/* Logo Upload */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <ImageIcon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="font-semibold text-gray-900">Logo URL</h2>
-                  <p className="text-sm text-gray-500">Externe URL oder lokaler Pfad</p>
+                  <h2 className="font-semibold text-gray-900">Logo</h2>
+                  <p className="text-sm text-gray-500">PNG, JPG oder SVG (max. 2MB)</p>
                 </div>
               </div>
-              <input
-                type="text"
-                value={logoUrl}
-                onChange={(e) => handleLogoChange(e.target.value)}
-                placeholder="https://example.com/logo.png"
-                className="w-full h-11 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-              />
+              
+              {/* Current logo preview */}
+              {logoUrl && (
+                <div className="mb-4 p-4 bg-gray-50 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-16 h-12 bg-white rounded border border-gray-200 flex items-center justify-center p-1">
+                      <Image
+                        src={logoUrl}
+                        alt="Logo preview"
+                        width={60}
+                        height={40}
+                        className="max-w-full max-h-full object-contain"
+                        onError={() => setLogoError(true)}
+                      />
+                    </div>
+                    <span className="text-sm text-gray-600 truncate max-w-[150px]">
+                      {logoUrl.startsWith("data:") ? "Hochgeladenes Logo" : logoUrl}
+                    </span>
+                  </div>
+                  <button
+                    onClick={clearLogo}
+                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Logo entfernen"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+              
+              {/* Upload area */}
+              <div
+                onClick={() => fileInputRef.current?.click()}
+                className={cn(
+                  "border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-all",
+                  isUploading
+                    ? "border-primary bg-primary/5"
+                    : "border-gray-300 hover:border-primary hover:bg-gray-50"
+                )}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+                {isUploading ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                    <span className="text-sm text-gray-600">Wird hochgeladen...</span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                      <Upload className="w-5 h-5 text-gray-500" />
+                    </div>
+                    <div>
+                      <span className="text-sm font-medium text-primary">Klicken zum Hochladen</span>
+                      <span className="text-sm text-gray-500"> oder Datei hierher ziehen</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
               {logoError && (
                 <p className="mt-2 text-sm text-red-600">
-                  Logo konnte nicht geladen werden. Bitte überprüfen Sie die URL.
+                  Logo konnte nicht geladen werden. Bitte überprüfen Sie die Datei.
                 </p>
               )}
             </div>
