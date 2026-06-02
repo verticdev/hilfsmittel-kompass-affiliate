@@ -414,9 +414,9 @@ export function PublicLanding() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-primary overflow-hidden">
-          <div className="relative flex flex-col md:flex-row md:items-end px-6 sm:px-10 lg:px-12">
+          <div className="relative flex flex-col md:flex-row md:items-end">
             {/* Left: Content */}
-            <div className="relative z-10 w-full md:w-[55%] py-8 md:py-10">
+            <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 xl:pl-[88px] py-8 md:py-10">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-sm text-white mb-4">
                 <CheckCircle2 className="w-4 h-4 text-secondary" />
                 <span>Exklusiv für {affiliateConfig.partnerName}-Kunden</span>
