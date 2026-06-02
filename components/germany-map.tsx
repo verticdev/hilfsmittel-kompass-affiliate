@@ -46,10 +46,10 @@ export function GermanyMap({ primaryColor = "#0F4386", secondaryColor = "#FFD700
   }
 
   return (
-    <div className="relative w-full flex flex-col items-center">
+    <div className="relative w-full flex justify-center overflow-visible">
       {/* Hovered state label */}
       {hoveredState && (
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-lg px-4 py-2 z-10 border border-gray-200">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-lg px-4 py-2 z-10 border border-gray-200">
           <span className="font-medium text-gray-900">{hoveredState}</span>
         </div>
       )}
@@ -58,11 +58,11 @@ export function GermanyMap({ primaryColor = "#0F4386", secondaryColor = "#FFD700
         projection="geoMercator"
         projectionConfig={{
           center: [10.4, 51.1],
-          scale: 2400,
+          scale: 1800,
         }}
-        width={450}
-        height={480}
-        style={{ width: "100%", height: "auto", maxWidth: "400px" }}
+        width={340}
+        height={400}
+        style={{ width: "100%", height: "auto", maxWidth: "340px" }}
       >
         <Geographies geography={GERMANY_TOPO_URL}>
           {({ geographies }) =>

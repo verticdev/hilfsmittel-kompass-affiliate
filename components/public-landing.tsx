@@ -558,11 +558,11 @@ export function PublicLanding() {
                   <span>Regionale Beratung</span>
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                  Finden Sie Ihren regionalen Pflegeberater
+                  Finden Sie Ihren regionalen Fachberater
                 </h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Gemeinsam mit unserem Partner <span className="font-semibold text-primary">Senioren Focus</span> vermitteln 
-                  wir Sie an erfahrene Pflegeexperten in Ihrer Nähe. Unsere Berater kennen die regionalen Angebote und 
+                  wir Sie an erfahrene Fachberater in Ihrer Nähe. Unsere Experten kennen die regionalen Angebote und 
                   unterstützen Sie persönlich bei allen Fragen zu Pflegeleistungen.
                 </p>
                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">
@@ -580,7 +580,7 @@ export function PublicLanding() {
                   </div>
                 </div>
                 <p className="mt-6 text-sm text-gray-500">
-                  Klicken Sie auf Ihr Bundesland, um einen Berater in Ihrer Region zu finden.
+                  Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
                 </p>
               </div>
               
