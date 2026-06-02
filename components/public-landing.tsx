@@ -431,20 +431,20 @@ export function PublicLanding() {
               </p>
               
               {/* Input and CTA - stacked on mobile, inline on desktop */}
-              <div className="mt-6 flex flex-col gap-3 max-w-md">
-                <div className="relative">
+              <div className="mt-6 flex flex-col md:flex-row md:items-stretch gap-3 md:gap-0 max-w-md md:max-w-lg">
+                <div className="relative flex-1">
                   <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Ihre Postleitzahl"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    className="w-full h-12 pl-11 pr-4 rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
+                    className="w-full h-12 pl-11 pr-4 rounded-lg md:rounded-r-none border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
                   />
                 </div>
                 <Link 
                   href={postalCode ? `/start?plz=${encodeURIComponent(postalCode)}` : "/start"}
-                  className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg text-base transition-colors"
+                  className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg md:rounded-l-none text-base transition-colors whitespace-nowrap"
                 >
                   Beratung starten
                   <ChevronRight className="w-5 h-5 ml-1" />
