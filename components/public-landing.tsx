@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
+import { GermanyMap } from "@/components/germany-map"
 
 // All services with their details
 const services = [
@@ -542,6 +543,54 @@ export function PublicLanding() {
                   onClick={() => trackServiceCardClick(service.id, service.title)}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Regional Search Section */}
+        <section id="regionale-suche" className="bg-white border-t border-gray-200 scroll-mt-16">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+              {/* Left: Text Content */}
+              <div className="lg:w-1/2 mb-8 lg:mb-0">
+                <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 text-sm text-primary mb-4">
+                  <MapPin className="w-4 h-4" />
+                  <span>Regionale Beratung</span>
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                  Finden Sie Ihren regionalen Pflegeberater
+                </h2>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Gemeinsam mit unserem Partner <span className="font-semibold text-primary">Senioren Focus</span> vermitteln 
+                  wir Sie an erfahrene Pflegeexperten in Ihrer Nähe. Unsere Berater kennen die regionalen Angebote und 
+                  unterstützen Sie persönlich bei allen Fragen zu Pflegeleistungen.
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>100% kostenlos</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>Unverbindlich</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>Experten vor Ort</span>
+                  </div>
+                </div>
+                <p className="mt-6 text-sm text-gray-500">
+                  Klicken Sie auf Ihr Bundesland, um einen Berater in Ihrer Region zu finden.
+                </p>
+              </div>
+              
+              {/* Right: Germany Map */}
+              <div className="lg:w-1/2">
+                <GermanyMap 
+                  primaryColor={affiliateConfig.primaryColor} 
+                  secondaryColor={affiliateConfig.secondaryColor} 
+                />
+              </div>
             </div>
           </div>
         </section>
