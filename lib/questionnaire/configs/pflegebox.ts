@@ -152,7 +152,7 @@ export const pflegeboxConfig: QuestionnaireConfig = {
       questions: [
         {
           id: "anmerkungen",
-          type: "textarea",
+          type: "long-text-field",
           label: "Anmerkungen",
           placeholder: "Hier können Sie uns weitere Informationen mitteilen...",
           required: false,

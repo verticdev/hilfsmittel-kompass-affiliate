@@ -4,6 +4,7 @@ export interface QuestionOption {
   value: string
   label: string
   description?: string
+  badge?: string
 }
 
 export interface ProductOption {
@@ -14,9 +15,9 @@ export interface ProductOption {
   productName: string
   description: string
   features: string[]
-  price: string
+  price?: string
   priceUnit?: string
-  priceNote: string
+  priceNote?: string
 }
 
 export interface QuestionConfig {
@@ -32,6 +33,7 @@ export interface QuestionConfig {
     | "range"
     | "combobox"
     | "long-text-field"
+    | "textarea"
     | "custom-radio"
     | "signature"
     | "product_selection"
@@ -60,7 +62,7 @@ export interface StepValidation {
 export interface QuestionnaireStep {
   id: string
   title: string
-  description: string
+  description?: string
   questions: QuestionConfig[]
   validation?: StepValidation
 }

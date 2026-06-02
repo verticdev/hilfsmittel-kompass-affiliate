@@ -491,7 +491,7 @@ export function QuestionnaireRenderer({ config }: QuestionnaireRendererProps) {
             </div>
             <Slider
               value={[rangeValue]}
-              onValueChange={([value]) => updateFormData(question.id, value)}
+              onValueChange={(values) => updateFormData(question.id, Array.isArray(values) ? values[0] : values)}
               min={question.min}
               max={question.max}
               step={question.step}
@@ -523,19 +523,19 @@ export function QuestionnaireRenderer({ config }: QuestionnaireRendererProps) {
                 if (!open) setComboboxSearch("")
               }}
             >
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
+              <PopoverTrigger>
+                <button
+                  type="button"
                   role="combobox"
                   className={cn(
-                    "w-full justify-between font-normal h-10 bg-white border-gray-300 shadow-sm",
+                    "flex h-10 w-full items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-normal shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                     !comboboxValue && "text-muted-foreground",
                     errors[question.id] && "border-red-500"
                   )}
                 >
                   {comboboxValue || question.placeholder || "Bitte wählen..."}
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                </Button>
+                </button>
               </PopoverTrigger>
               <PopoverContent className="w-full p-0" align="start">
                 <Command shouldFilter={false}>

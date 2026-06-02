@@ -8,6 +8,7 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "betreuung-fuer",
       title: "Für wen wird die 24h-Pflegekraft benötigt?",
+      description: "Bitte wählen Sie aus, für wen die Betreuung gedacht ist",
       questions: [
         {
           id: "betreuung-fuer",
@@ -26,6 +27,7 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "zimmer",
       title: "Ist ein Zimmer für die Pflegekraft vorhanden?",
+      description: "Die Pflegekraft benötigt ein eigenes Zimmer",
       questions: [
         {
           id: "zimmer-vorhanden",
@@ -42,6 +44,7 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "pflegegrad",
       title: "Ist ein Pflegegrad vorhanden?",
+      description: "Angaben zum aktuellen Pflegegrad",
       questions: [
         {
           id: "pflegegrad",
@@ -59,6 +62,7 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "budget",
       title: "Welches monatliche Budget steht zur Verfügung?",
+      description: "Ihr verfügbares Budget für die 24h-Betreuung",
       questions: [
         {
           id: "budget",
@@ -77,6 +81,7 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "zeitpunkt",
       title: "Wann wird die Pflegekraft benötigt?",
+      description: "Gewünschter Starttermin der Betreuung",
       questions: [
         {
           id: "zeitpunkt",
@@ -95,10 +100,11 @@ export const twentyFourHourCareConfig: QuestionnaireConfig = {
     {
       id: "anmerkungen",
       title: "Haben Sie weitere Anmerkungen?",
+      description: "Optionale zusätzliche Informationen",
       questions: [
         {
           id: "anmerkungen",
-          type: "textarea",
+          type: "long-text-field",
           label: "Anmerkungen",
           placeholder: "Hier können Sie uns weitere Informationen mitteilen...",
           required: false,
