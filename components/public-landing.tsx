@@ -417,13 +417,13 @@ export function PublicLanding() {
             </div>
             
             {/* Hero Image - mobile and desktop */}
-            <div className="w-full md:w-[45%] md:flex md:items-end md:justify-end">
+            <div className="w-full md:w-[45%] md:flex md:items-end md:justify-end -mx-6 md:mx-0 px-0">
               <Image
                 src="/images/hero-consultation.png"
                 alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
                 width={550}
                 height={450}
-                className="w-full h-auto max-h-[280px] md:max-h-[480px] object-contain object-bottom"
+                className="w-full h-auto max-h-[300px] md:max-h-[480px] object-cover object-top md:object-contain md:object-bottom"
                 priority
               />
             </div>
