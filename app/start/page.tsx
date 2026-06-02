@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
-import { BRAND_ASSETS } from "@/lib/brand-assets"
+import { useAffiliate } from "@/lib/affiliate/context"
 import { cn } from "@/lib/utils"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 
@@ -64,6 +64,7 @@ const serviceOptions = [
 function ServiceSelectionContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const affiliateConfig = useAffiliate()
   const [selectedService, setSelectedService] = useState<string | null>(null)
   const [postalCode, setPostalCode] = useState<string>("")
 
@@ -111,8 +112,8 @@ function ServiceSelectionContent() {
           <div className="flex items-center justify-between">
             <Link href={buildUrlWithTracking("/", searchParams)} className="flex items-center gap-2.5">
               <Image
-                src={BRAND_ASSETS.logo.main || "/placeholder.svg"}
-                alt={BRAND_ASSETS.logo.alt}
+                src={affiliateConfig.logo || "/placeholder.svg"}
+                alt={affiliateConfig.partnerName}
                 width={130}
                 height={40}
                 style={{ height: 40, width: "auto" }}
