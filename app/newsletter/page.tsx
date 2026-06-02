@@ -338,8 +338,10 @@ export default function NewsletterPage() {
               Bitte antworten Sie nicht direkt auf diese E-Mail.
             </p>
             <p className="text-xs text-gray-500 leading-relaxed">
-              Diese E-Mail wurde an max.mustermann@beispiel.de gesendet. 
-              <a href="#" className="underline ml-1">Newsletter abbestellen</a> | 
+              Diese E-Mail wurde an max.mustermann@beispiel.de gesendet.
+            </p>
+            <p className="text-xs text-gray-500 leading-relaxed mt-1">
+              <a href="#" className="underline">Newsletter abbestellen</a> | 
               <a href="#" className="underline ml-1">Datenschutz</a> | 
               <a href="#" className="underline ml-1">Impressum</a>
             </p>
