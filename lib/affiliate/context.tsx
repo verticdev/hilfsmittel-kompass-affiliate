@@ -36,19 +36,49 @@ const AffiliateContext = createContext<AffiliateContextValue>({
   isCustomized: false,
 })
 
+// Helper to check if a color is white or near-white
+function isWhiteOrNearWhite(hex: string): boolean {
+  const cleanHex = hex.replace("#", "")
+  const r = parseInt(cleanHex.slice(0, 2), 16)
+  const g = parseInt(cleanHex.slice(2, 4), 16)
+  const b = parseInt(cleanHex.slice(4, 6), 16)
+  // Consider it "white" if all channels are above 240
+  return r >= 240 && g >= 240 && b >= 240
+}
+
+// Helper to generate a light tint of a color (for use when secondary is white)
+function generateLightTint(hex: string): string {
+  const cleanHex = hex.replace("#", "")
+  const r = parseInt(cleanHex.slice(0, 2), 16)
+  const g = parseInt(cleanHex.slice(2, 4), 16)
+  const b = parseInt(cleanHex.slice(4, 6), 16)
+  
+  // Mix with white to create a light tint (85% white, 15% primary)
+  const tintR = Math.round(r * 0.15 + 255 * 0.85)
+  const tintG = Math.round(g * 0.15 + 255 * 0.85)
+  const tintB = Math.round(b * 0.15 + 255 * 0.85)
+  
+  return `#${tintR.toString(16).padStart(2, "0")}${tintG.toString(16).padStart(2, "0")}${tintB.toString(16).padStart(2, "0")}`
+}
+
 // Helper to inject CSS variables for colors
 function injectColorVariables(primary: string, secondary: string) {
   if (typeof document === "undefined") return
   
   const root = document.documentElement
   
+  // If secondary is white/near-white, generate a light tint of primary instead
+  const effectiveSecondary = isWhiteOrNearWhite(secondary) 
+    ? generateLightTint(primary) 
+    : secondary
+  
   // Set CSS variables directly with hex values (matching globals.css format)
   root.style.setProperty("--primary", primary)
-  root.style.setProperty("--secondary", secondary)
+  root.style.setProperty("--secondary", effectiveSecondary)
   root.style.setProperty("--ring", primary)
   root.style.setProperty("--secondary-foreground", primary)
   root.style.setProperty("--affiliate-primary", primary)
-  root.style.setProperty("--affiliate-secondary", secondary)
+  root.style.setProperty("--affiliate-secondary", effectiveSecondary)
   root.style.setProperty("--info", primary)
   root.style.setProperty("--sidebar-primary", primary)
   root.style.setProperty("--chart-1", primary)
