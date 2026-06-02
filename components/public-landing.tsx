@@ -421,7 +421,7 @@ export function PublicLanding() {
               </div>
               
               {/* Trust badges - single row, no wrapping */}
-              <div className="mt-6 flex items-center justify-start gap-3 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm text-white/90">
+              <div className="mt-4 mb-2 md:mt-6 md:mb-0 flex items-center justify-start gap-3 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm text-white/90">
                 <div className="flex items-center gap-1 whitespace-nowrap">
                   <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary flex-shrink-0" />
                   <span>100% kostenlos</span>
