@@ -106,7 +106,7 @@ export default function NewsletterPage() {
           </div>
 
           {/* Value Proposition Box - overlapping image */}
-          <div className="mx-8 -mt-6 relative z-10">
+          <div className="mx-8 -mt-6 relative">
             <div 
               className="rounded-lg p-6 text-center shadow-lg"
               style={{ 
