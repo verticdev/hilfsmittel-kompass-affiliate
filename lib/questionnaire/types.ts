@@ -33,6 +33,7 @@ export interface QuestionConfig {
     | "range"
     | "combobox"
     | "long-text-field"
+    | "textarea"
     | "custom-radio"
     | "signature"
     | "product_selection"
