@@ -375,6 +375,9 @@ export function PublicLanding() {
                 <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   Unsere Leistungen
                 </Link>
+                <Link href="#regionale-suche" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Regionale Beratung
+                </Link>
                 <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   Häufig gestellte Fragen
                 </Link>
