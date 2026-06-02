@@ -135,11 +135,9 @@ export default function NewsletterPage() {
               Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
-            <p className="text-gray-700 mb-4 leading-relaxed" style={{ fontSize: "18px" }}>
-              als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf eine 
-              besondere Partnerschaft aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
-              wir Ihnen ab sofort den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> - 
-              Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.partnerName}-Kunde 
+              völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
             </p>
 
             {/* First CTA with Secondary Color accent */}
