@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Smartphone } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
@@ -96,6 +96,50 @@ const benefits = [
   },
 ]
 
+// Carousel slides data
+const carouselSlides = [
+  {
+    id: "alltagshilfe",
+    label: "Alltagshilfe",
+    icon: Home,
+    image: "/images/carousel-alltagshilfe.png",
+    headline: "Bis zu 131 € monatlich für Unterstützung im Alltag",
+    description: "Ob Einkaufen, Putzen oder Begleitung – wir finden passende Unterstützung für Sie. Bleiben Sie selbstständig und entlasten Ihre Angehörigen.",
+    cta: "Alltagshilfe finden",
+    href: "/alltagshilfe",
+  },
+  {
+    id: "badumbau",
+    label: "Barrierefreies Bad",
+    icon: Bath,
+    image: "/images/carousel-badumbau.jpg",
+    headline: "Bis zu 4.180 € Zuschuss für Ihr barrierefreies Bad",
+    description: "Mehr Sicherheit und Komfort im Badezimmer: Wir helfen Ihnen, Zuschüsse für bodengleiche Duschen, Haltegriffe oder einen Badumbau zu erhalten.",
+    cta: "Badumbau-Zuschuss prüfen",
+    href: "/badumbau",
+  },
+  {
+    id: "hausnotruf",
+    label: "Hausnotruf",
+    icon: Smartphone,
+    image: "/images/carousel-hausnotruf.png",
+    headline: "Hausnotruf kostenlos ab Pflegegrad 1",
+    description: "Schnelle Hilfe auf Knopfdruck – rund um die Uhr. Bleiben Sie zuhause sicher und geben Sie sich und Ihrer Familie ein gutes Gefühl.",
+    cta: "Kostenlosen Hausnotruf prüfen",
+    href: "/hausnotruf",
+  },
+  {
+    id: "treppenlift",
+    label: "Treppenlift",
+    icon: Award,
+    image: "/images/carousel-treppenlift.png",
+    headline: "Bis zu 4.180 € Zuschuss für Ihren Treppenlift",
+    description: "Bleiben Sie in den eigenen vier Wänden mobil und sicher. Wir helfen bei Zuschüssen und vergleichen Angebote seriöser Anbieter.",
+    cta: "Treppenlift-Zuschuss prüfen",
+    href: "/treppenlift",
+  },
+]
+
 // Service card component
 function ServiceCard({ service, onClick }: { service: typeof services[0]; onClick?: () => void }) {
   return (
@@ -130,6 +174,134 @@ function ServiceCard({ service, onClick }: { service: typeof services[0]; onClic
         </div>
       </div>
     </Link>
+  )
+}
+
+// Support Carousel component
+function SupportCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const currentSlide = carouselSlides[activeIndex]
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev + 1) % carouselSlides.length)
+  }
+
+  const goToPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length)
+  }
+
+  return (
+    <section className="bg-gray-50 border-y border-gray-200">
+      <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            So unterstützen wir Sie
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Entdecken Sie, welche Leistungen Ihnen zustehen – und wie andere Senioren davon profitieren.
+          </p>
+        </div>
+
+        {/* Tab Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
+          {carouselSlides.map((slide, index) => {
+            const IconComponent = slide.icon
+            return (
+              <button
+                key={slide.id}
+                onClick={() => setActiveIndex(index)}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  index === activeIndex
+                    ? "bg-secondary text-primary shadow-sm"
+                    : "bg-white border border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                <IconComponent className="w-4 h-4" />
+                <span className="hidden sm:inline">{slide.label}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Carousel Content */}
+        <div className="relative">
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:border-secondary transition-colors"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-secondary shadow-sm flex items-center justify-center text-gray-600 hover:bg-secondary/10 transition-colors"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Slide Content */}
+          <div className="bg-white rounded-xl overflow-hidden mx-6 md:mx-10">
+            <div className="flex flex-col md:flex-row">
+              {/* Image */}
+              <div className="md:w-1/2">
+                <div className="aspect-[4/3] md:aspect-auto md:h-full relative">
+                  <img
+                    src={currentSlide.image}
+                    alt={currentSlide.label}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="md:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                <div className="flex items-center gap-2 text-gray-500 mb-3">
+                  <currentSlide.icon className="w-5 h-5" />
+                  <span className="text-sm font-medium">{currentSlide.label}</span>
+                </div>
+                
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                  {currentSlide.headline}
+                </h3>
+                
+                <p className="mt-4 text-gray-600 leading-relaxed">
+                  {currentSlide.description}
+                </p>
+                
+                <div className="mt-6">
+                  <Link
+                    href={buildUrlWithTracking(currentSlide.href)}
+                    className="inline-flex items-center justify-center h-11 px-6 bg-secondary text-primary font-semibold rounded-lg hover:bg-secondary/90 transition-colors"
+                  >
+                    {currentSlide.cta}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {carouselSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`transition-all ${
+                  index === activeIndex
+                    ? "w-6 h-2 bg-secondary rounded-full"
+                    : "w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -294,6 +466,9 @@ export function PublicLanding() {
             </div>
           </div>
         </section>
+
+        {/* Support Carousel Section */}
+        <SupportCarousel />
 
         {/* Services Section */}
         <section id="services" className="bg-primary scroll-mt-16">
