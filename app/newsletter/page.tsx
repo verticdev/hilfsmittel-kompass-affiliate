@@ -29,7 +29,7 @@ export default function NewsletterPage() {
             </div>
             <div className="flex gap-2">
               <span className="font-medium w-16">Betreff:</span>
-              <span className="font-semibold text-gray-900">Exklusiv: Ihre Vorteile für Pflege, Sicherheit & Alltag</span>
+              <span className="font-semibold text-gray-900">Exklusiv für Sie: Entdecken Sie Ihre Pflege-Vorteile mit Senioren Focus</span>
             </div>
           </div>
         </div>
@@ -61,13 +61,23 @@ export default function NewsletterPage() {
             )}
           </div>
 
+          {/* Exclusive Partnership Banner */}
+          <div 
+            className="px-8 py-4 text-center"
+            style={{ backgroundColor: `${affiliateConfig.primaryColor}10` }}
+          >
+            <p className="text-sm font-medium" style={{ color: affiliateConfig.primaryColor }}>
+              Exklusiv für {affiliateConfig.companyName}-Kunden
+            </p>
+          </div>
+
           {/* Attention-Grabbing Headline Banner */}
           <div 
             className="px-8 py-5"
             style={{ backgroundColor: affiliateConfig.primaryColor }}
           >
             <h1 className="text-xl md:text-2xl font-bold text-white text-center">
-              Entlastung & Unterstützung im Pflegealltag - kostenlos!
+              Ihre Vorteile durch unsere Partnerschaft mit Senioren Focus
             </h1>
           </div>
 
@@ -85,7 +95,7 @@ export default function NewsletterPage() {
               className="absolute bottom-4 left-4 px-4 py-2 rounded-lg text-white font-bold text-lg"
               style={{ backgroundColor: affiliateConfig.primaryColor }}
             >
-              KOSTENLOSE BERATUNG
+              EXKLUSIV FÜR SIE
             </div>
           </div>
 
@@ -100,10 +110,15 @@ export default function NewsletterPage() {
             </h2>
 
             <p className="text-gray-700 mb-4 leading-relaxed text-lg">
-              kennen Sie schon den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> in 
-              Kooperation mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span>? 
-              Wir helfen Ihnen, <strong>alle Leistungen zu erhalten, die Ihnen zustehen</strong> - von Pflegehilfsmitteln 
-              bis zum Hausnotruf!
+              als geschätzter <strong>{affiliateConfig.companyName}-Kunde</strong> möchten wir Sie auf eine 
+              besondere Partnerschaft aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
+              wir Ihnen ab sofort den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> - 
+              Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
+            </p>
+
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.companyName}-Kunde 
+              völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
             </p>
 
             {/* First CTA */}
@@ -113,10 +128,10 @@ export default function NewsletterPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: affiliateConfig.primaryColor }}
               >
-                Jetzt kostenlos beraten lassen
+                Meine Vorteile entdecken
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <p className="text-sm text-gray-500 mt-2">Unverbindlich & in nur 2 Minuten</p>
+              <p className="text-sm text-gray-500 mt-2">100% kostenlos - exklusiv für {affiliateConfig.companyName}-Kunden</p>
             </div>
 
             {/* Benefits with Icons */}
