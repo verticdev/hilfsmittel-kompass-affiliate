@@ -419,7 +419,7 @@ export function PublicLanding() {
             <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 py-8 md:py-10">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-sm text-white mb-4">
                 <CheckCircle2 className="w-4 h-4 text-secondary" />
-                <span>Exklusiv für EDEKA-Kunden</span>
+                <span>Exklusiv für {affiliateConfig.partnerName}-Kunden</span>
               </div>
               
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-white text-balance">
@@ -475,7 +475,7 @@ export function PublicLanding() {
             <div className="w-[100vw] relative left-[50%] -translate-x-[50%] -mt-4 md:mt-0 md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
               <Image
                 src="/images/hero-consultation.png"
-                alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
+                alt={`${affiliateConfig.partnerName} Pflegeberatung - Persönliche Beratung zu Hause`}
                 width={550}
                 height={450}
                 className="w-full h-auto max-h-[300px] md:max-h-[480px] object-cover object-top md:object-contain md:object-bottom"
