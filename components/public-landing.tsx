@@ -339,6 +339,7 @@ function SupportCarousel() {
 export function PublicLanding() {
   const searchParams = useSearchParams()
   const affiliateConfig = useAffiliate()
+  const [postalCode, setPostalCode] = useState("")
 
   // Save tracking params and track page view when component mounts
   useEffect(() => {
@@ -436,11 +437,13 @@ export function PublicLanding() {
                   <input
                     type="text"
                     placeholder="Ihre Postleitzahl"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                     className="w-full h-12 pl-11 pr-4 rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
                   />
                 </div>
                 <Link 
-                  href="#services"
+                  href={postalCode ? `/start?plz=${encodeURIComponent(postalCode)}` : "/start"}
                   className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg text-base transition-colors"
                 >
                   Beratung starten
@@ -628,11 +631,11 @@ export function PublicLanding() {
               Viele Leistungen stehen Ihnen zu - wir helfen Ihnen, diese zu beantragen. 
               Kostenlos und unverbindlich.
             </p>
-            <Link 
-              href="#services"
-              className="mt-6 inline-flex h-11 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8 rounded-lg transition-colors"
-            >
-              Jetzt Leistung auswählen
+  <Link
+  href="/start"
+  className="mt-6 inline-flex h-11 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8 rounded-lg transition-colors"
+  >
+  Jetzt Leistung auswählen
               <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </div>
