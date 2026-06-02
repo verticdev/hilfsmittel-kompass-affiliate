@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
+import { GermanyMap } from "@/components/germany-map"
 
 // All services with their details
 const services = [
@@ -221,7 +222,7 @@ function SupportCarousel() {
       <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900">
             So unterstützen wir Sie
           </h2>
           <p className="mt-2 text-gray-600">
@@ -295,7 +296,7 @@ function SupportCarousel() {
                   <span className="text-sm font-medium">{currentSlide.label}</span>
                 </div>
                 
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight">
                   {currentSlide.headline}
                 </h3>
                 
@@ -368,28 +369,31 @@ export function PublicLanding() {
               
               {/* Navigation - Desktop */}
               <nav className="hidden md:flex items-center gap-6">
-                <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  Leistungen
+                <Link href="#so-funktionierts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  So funktioniert&apos;s
                 </Link>
-                <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  Alle Services
+                <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Unsere Leistungen
+                </Link>
+                <Link href="#regionale-suche" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Regionale Beratung
                 </Link>
                 <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  FAQ
+                  Häufig gestellte Fragen
                 </Link>
               </nav>
               
               {/* Right side - Desktop: phone text, Mobile: Anrufen button + Menu */}
               <div className="flex items-center gap-3">
-                {/* Desktop phone text */}
-                <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
-                  <Phone className="w-4 h-4 text-primary" />
-                  <span>Kostenlose Beratung</span>
-                </div>
+                {/* Desktop phone number - prominent with yellow underline */}
+                <a href="tel:+49800123456" className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                  <Phone className="w-5 h-5" />
+                  <span className="font-semibold text-base border-b-2 border-secondary">+49 800 123 456</span>
+                </a>
                 
                 {/* Mobile: Anrufen button */}
                 <a 
-                  href="tel:+4930123456789" 
+                  href="tel:+49800123456" 
                   className="md:hidden inline-flex items-center gap-1.5 bg-secondary hover:bg-secondary/90 text-primary font-semibold px-3 py-2 rounded-full text-sm transition-colors"
                 >
                   <Phone className="w-4 h-4" />
@@ -413,13 +417,13 @@ export function PublicLanding() {
         <section className="bg-primary overflow-hidden">
           <div className="relative flex flex-col md:flex-row md:items-end">
             {/* Left: Content */}
-            <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 py-8 md:py-10">
+            <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 xl:pl-[88px] py-8 md:py-10">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-sm text-white mb-4">
                 <CheckCircle2 className="w-4 h-4 text-secondary" />
-                <span>Exklusiv für EDEKA-Kunden</span>
+                <span>Exklusiv für {affiliateConfig.partnerName}-Kunden</span>
               </div>
               
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white text-balance">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-white text-balance">
                 Ihre Pflegeleistungen<br />
                 - <span className="text-secondary">einfach beantragt</span>
               </h1>
@@ -431,20 +435,20 @@ export function PublicLanding() {
               </p>
               
               {/* Input and CTA - stacked on mobile, inline on desktop */}
-              <div className="mt-6 flex flex-col gap-3 max-w-md">
-                <div className="relative">
+              <div className="mt-6 flex flex-col md:flex-row md:items-stretch gap-3 md:gap-0 max-w-sm md:max-w-md">
+                <div className="relative flex-1">
                   <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Ihre Postleitzahl"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
-                    className="w-full h-12 pl-11 pr-4 rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
+                    className="w-full h-12 pl-11 pr-4 rounded-lg md:rounded-r-none border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
                   />
                 </div>
                 <Link 
                   href={postalCode ? `/start?plz=${encodeURIComponent(postalCode)}` : "/start"}
-                  className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg text-base transition-colors"
+                  className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg md:rounded-l-none text-base transition-colors whitespace-nowrap"
                 >
                   Beratung starten
                   <ChevronRight className="w-5 h-5 ml-1" />
@@ -472,7 +476,7 @@ export function PublicLanding() {
             <div className="w-[100vw] relative left-[50%] -translate-x-[50%] -mt-4 md:mt-0 md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
               <Image
                 src="/images/hero-consultation.png"
-                alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
+                alt={`${affiliateConfig.partnerName} Pflegeberatung - Persönliche Beratung zu Hause`}
                 width={550}
                 height={450}
                 className="w-full h-auto max-h-[300px] md:max-h-[480px] object-cover object-top md:object-contain md:object-bottom"
@@ -490,28 +494,28 @@ export function PublicLanding() {
                 <div className="flex justify-center mb-2">
                   <Users className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">10.000+</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">10.000+</div>
                 <div className="text-sm text-muted-foreground">Beratene Senioren</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <MapPin className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">250+</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">250+</div>
                 <div className="text-sm text-muted-foreground">Regionale Berater</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <Star className="w-6 h-6 text-secondary" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">4.9</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">4.9</div>
                 <div className="text-sm text-muted-foreground">Kundenbewertung</div>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
                   <Shield className="w-6 h-6 text-primary opacity-70" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">100%</div>
+                <div className="text-xl md:text-2xl font-bold text-foreground">100%</div>
                 <div className="text-sm text-muted-foreground">Kostenlose Beratung</div>
               </div>
             </div>
@@ -525,9 +529,9 @@ export function PublicLanding() {
         <section id="services" className="bg-primary scroll-mt-16">
           <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
             <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Welche Leistung interessiert Sie?
-              </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white">
+              Welche Leistung interessiert Sie?
+            </h2>
               <p className="mt-2 text-white/80">
                 Wählen Sie einen Bereich aus und erhalten Sie eine kostenlose, unverbindliche Beratung
               </p>
@@ -546,13 +550,100 @@ export function PublicLanding() {
           </div>
         </section>
 
+        {/* Regional Search Section */}
+        <section id="regionale-suche" className="bg-white border-t border-gray-200 scroll-mt-16">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
+            <div className="relative flex flex-col lg:flex-row lg:items-center lg:gap-12">
+              {/* Left: Text Content */}
+              <div className="lg:w-1/2 mb-8 lg:mb-0">
+                <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 text-sm text-primary mb-4">
+                  <MapPin className="w-4 h-4" />
+                  <span>Regionale Beratung</span>
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                  Finden Sie Ihren regionalen Fachberater
+                </h2>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Gemeinsam mit unserem Partner <span className="font-semibold text-primary">Senioren Focus</span> vermitteln 
+                  wir Sie an erfahrene Fachberater in Ihrer Nähe. Unsere Experten kennen die regionalen Angebote und 
+                  unterstützen Sie persönlich bei allen Fragen zu Pflegeleistungen.
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>100% kostenlos</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>Unverbindlich</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>Experten vor Ort</span>
+                  </div>
+                </div>
+                
+                {/* Partner Badge and instruction */}
+                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+                  <Image
+                    src="/images/senioren-focus-badge.png"
+                    alt="Senioren Focus - Offizieller Partner"
+                    width={56}
+                    height={56}
+                    className="flex-shrink-0"
+                  />
+                  <p className="text-sm text-gray-600 max-w-xs">
+                    Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Static curved arrow overlay - desktop only, positioned between columns */}
+              <svg 
+                width="180" 
+                height="80" 
+                viewBox="0 0 180 80" 
+                className="hidden lg:block absolute left-[calc(50%-40px)] bottom-12 z-10"
+                style={{ color: affiliateConfig.primaryColor }}
+              >
+                {/* Curved arrow path pointing right toward map */}
+                <path 
+                  d="M0 55 Q 50 50, 90 35 Q 130 20, 165 28" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeDasharray="6,4"
+                />
+                {/* Arrow head */}
+                <path 
+                  d="M158 20 L170 28 L158 36" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              
+              {/* Right: Germany Map */}
+              <div className="lg:w-1/2">
+                <GermanyMap 
+                  primaryColor={affiliateConfig.primaryColor} 
+                  secondaryColor={affiliateConfig.secondaryColor} 
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section id="faq" className="bg-gray-50 border-t border-gray-200 scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Häufig gestellte Fragen
-              </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+              Häufig gestellte Fragen
+            </h2>
               <p className="mt-2 text-gray-600">
                 Antworten auf die wichtigsten Fragen rund um Pflegeleistungen
               </p>
@@ -604,7 +695,7 @@ export function PublicLanding() {
 
         {/* Trust Elements Section */}
         <section className="bg-white border-y border-gray-200">
-          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-12">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-16 lg:py-20">
             <div className="grid md:grid-cols-3 gap-6 md:gap-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex gap-4">
@@ -624,7 +715,7 @@ export function PublicLanding() {
         {/* CTA Section */}
         <section className="bg-primary">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-xl md:text-2xl font-bold text-white">
               Nutzen Sie Ihre Pflegeleistungen voll aus
             </h2>
             <p className="mt-3 text-white/90 max-w-xl mx-auto">
