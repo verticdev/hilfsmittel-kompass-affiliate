@@ -506,7 +506,7 @@ export function PublicLanding() {
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
-                  <Star className="w-6 h-6 text-secondary" />
+                  <Star className="w-6 h-6 text-primary opacity-70" />
                 </div>
                 <div className="text-xl md:text-2xl font-bold text-foreground">4.9</div>
                 <div className="text-sm text-muted-foreground">Kundenbewertung</div>
