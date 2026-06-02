@@ -589,7 +589,7 @@ export function PublicLanding() {
                     height={56}
                     className="flex-shrink-0"
                   />
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 max-w-xs">
                     Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
                   </p>
                 </div>
