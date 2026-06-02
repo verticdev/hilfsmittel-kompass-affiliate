@@ -1,67 +1,117 @@
-import type { ReadonlyURLSearchParams } from "next/navigation"
+// Tracking params to preserve across navigation
+export const TRACKING_PARAMS = [
+  "partner_id",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "gclid",
+  "fbclid",
+  "ref",
+  "partner",
+  "clickid",
+] as const
 
-const TRACKING_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "ref", "partner", "clickid"] as const
+const STORAGE_KEY = "hmk_tracking_params"
 
-type TrackingParams = {
-  [K in (typeof TRACKING_PARAMS)[number]]?: string
+export type TrackingParams = {
+  [key in (typeof TRACKING_PARAMS)[number]]?: string
 }
 
-let savedParams: TrackingParams = {}
+/**
+ * Save tracking params to sessionStorage
+ */
+export function saveTrackingParams(searchParams: URLSearchParams): void {
+  if (typeof window === "undefined") return
 
-export function saveTrackingParams(searchParams: ReadonlyURLSearchParams) {
   const params: TrackingParams = {}
-  
+  let hasParams = false
+
   TRACKING_PARAMS.forEach((param) => {
     const value = searchParams.get(param)
     if (value) {
       params[param] = value
+      hasParams = true
     }
   })
-  
-  savedParams = params
-  
-  // Also save to sessionStorage if available
-  if (typeof window !== "undefined") {
+
+  if (hasParams) {
     try {
-      sessionStorage.setItem("tracking_params", JSON.stringify(params))
-    } catch {
-      // Silent fail for SSR or storage unavailable
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(params))
+    } catch (e) {
+      console.warn("Failed to save tracking params to sessionStorage:", e)
     }
   }
-  
-  return params
 }
 
-export function getTrackingParams(): TrackingParams {
-  if (typeof window !== "undefined" && Object.keys(savedParams).length === 0) {
-    try {
-      const stored = sessionStorage.getItem("tracking_params")
-      if (stored) {
-        savedParams = JSON.parse(stored)
+/**
+ * Get tracking params from sessionStorage
+ */
+export function getStoredTrackingParams(): TrackingParams {
+  if (typeof window === "undefined") return {}
+
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      return JSON.parse(stored)
+    }
+  } catch (e) {
+    console.warn("Failed to read tracking params from sessionStorage:", e)
+  }
+  return {}
+}
+
+/**
+ * Build URL with tracking params from both URL and sessionStorage
+ * URL params take priority over stored params
+ */
+export function buildUrlWithTracking(baseUrl: string, searchParams?: URLSearchParams): string {
+  const storedParams = getStoredTrackingParams()
+  const params = new URLSearchParams()
+
+  // First add stored params
+  TRACKING_PARAMS.forEach((param) => {
+    const storedValue = storedParams[param]
+    if (storedValue) {
+      params.set(param, storedValue)
+    }
+  })
+
+  // Then override with URL params (they take priority)
+  if (searchParams) {
+    TRACKING_PARAMS.forEach((param) => {
+      const urlValue = searchParams.get(param)
+      if (urlValue) {
+        params.set(param, urlValue)
       }
-    } catch {
-      // Silent fail
-    }
+    })
   }
-  
-  return savedParams
+
+  const queryString = params.toString()
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl
 }
 
-export function buildUrlWithTracking(baseUrl: string): string {
-  const params = getTrackingParams()
-  
-  if (Object.keys(params).length === 0) {
-    return baseUrl
+/**
+ * Get all tracking params (merged from URL and storage)
+ */
+export function getAllTrackingParams(searchParams?: URLSearchParams): TrackingParams {
+  const storedParams = getStoredTrackingParams()
+  const result: TrackingParams = { ...storedParams }
+
+  if (searchParams) {
+    TRACKING_PARAMS.forEach((param) => {
+      const urlValue = searchParams.get(param)
+      if (urlValue) {
+        result[param] = urlValue
+      }
+    })
   }
-  
-  const url = new URL(baseUrl, "http://placeholder.com")
-  
-  Object.entries(params).forEach(([key, value]) => {
-    if (value) {
-      url.searchParams.set(key, value)
-    }
-  })
-  
-  // Return just the path + search params without the placeholder origin
-  return `${url.pathname}${url.search}`
+
+  return result
+}
+
+// Legacy alias for backwards compatibility
+export function getTrackingParams(): TrackingParams {
+  return getStoredTrackingParams()
 }

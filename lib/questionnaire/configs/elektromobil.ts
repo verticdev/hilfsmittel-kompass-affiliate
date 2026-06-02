@@ -1,0 +1,150 @@
+import type { QuestionnaireConfig } from "../types"
+import { krankenkassenOptions } from "./shared/krankenkassen-options"
+
+export const elektromobilConfig: QuestionnaireConfig = {
+  id: "elektromobil",
+  title: "Elektromobil",
+  description: "ab 0€ mit Rezept",
+  steps: [
+    {
+      id: "reichweite",
+      title: "Welche Reichweite soll das Elektromobil haben?",
+      questions: [
+        {
+          id: "reichweite",
+          type: "radio",
+          label: "Reichweite",
+          required: true,
+          options: [
+            { value: "kurze Strecke (15km)", label: "Kurze Strecke (15km)" },
+            { value: "mittlere Strecke (30km)", label: "Mittlere Strecke (30km)" },
+            { value: "weite Strecke (60km)", label: "Weite Strecke (60km)" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "anfrage-fuer",
+      title: "Für wen ist die Anfrage gedacht?",
+      questions: [
+        {
+          id: "anfrage_fuer",
+          type: "radio",
+          label: "Anfrage für",
+          required: true,
+          options: [
+            { value: "Für mich", label: "Für mich" },
+            { value: "Angehörige", label: "Angehörige" },
+            { value: "Patient/Kunde", label: "Patient/Kunde" },
+            { value: "Andere Person", label: "Andere Person" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "koerpergewicht",
+      title: "Für welches Körpergewicht soll das Modell nutzbar sein?",
+      questions: [
+        {
+          id: "koerpergewicht",
+          type: "radio",
+          label: "Körpergewicht",
+          required: true,
+          options: [
+            { value: "bis 90 KG", label: "Bis 90 kg" },
+            { value: "90 - 145 KG", label: "90 - 145 kg" },
+            { value: "über 145 KG", label: "Über 145 kg" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "krankenkasse",
+      title: "Bei welcher Krankenkasse sind Sie versichert?",
+      questions: [
+        {
+          id: "krankenkasse",
+          type: "combobox",
+          label: "Krankenkasse",
+          placeholder: "Krankenkasse auswählen...",
+          searchPlaceholder: "Krankenkasse suchen...",
+          emptyMessage: "Keine Krankenkasse gefunden.",
+          allowCustomValue: true,
+          options: krankenkassenOptions,
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "rezept",
+      title: "Ist ein Rezept für ein Elektromobil vorhanden?",
+      questions: [
+        {
+          id: "rezeptVorhanden",
+          type: "radio",
+          label: "Rezept",
+          required: true,
+          options: [
+            { value: "Vorhanden", label: "Vorhanden" },
+            { value: "Beantragt", label: "Beantragt" },
+            { value: "Nicht vorhanden", label: "Nicht vorhanden" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "zeitpunkt",
+      title: "Wann wird das Elektromobil benötigt?",
+      questions: [
+        {
+          id: "zeitpunkt",
+          type: "radio",
+          label: "Zeitpunkt",
+          required: true,
+          options: [
+            { value: "Sofort", label: "Sofort" },
+            { value: "In 1 Monat", label: "In 1 Monat" },
+            { value: "In 3 Monaten", label: "In 3 Monaten" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "remarks",
+      title: "Weitere Anmerkungen zum Kunden/Sachverhalt",
+      description: "",
+      questions: [
+        { id: "anmerkungen", type: "long-text-field", label: "Anmerkungen", placeholder: "Optionale Anmerkungen...", required: false },
+      ],
+    },
+    {
+      id: "contact",
+      title: "Ihre Kontaktdaten",
+      description: "Damit wir Sie für ein unverbindliches Angebot kontaktieren können",
+      questions: [
+        { id: "anrede", type: "radio", label: "Anrede", required: false, options: [{ value: "Herr", label: "Herr" }, { value: "Frau", label: "Frau" }] },
+        { id: "vorname", type: "text", label: "Vorname", placeholder: "Max", required: true },
+        { id: "nachname", type: "text", label: "Nachname", placeholder: "Mustermann", required: true },
+        { id: "email", type: "email", label: "E-Mail (optional)", placeholder: "max@beispiel.de", required: false },
+        { id: "telefonnummer", type: "tel", label: "Telefonnummer", placeholder: "+49 123 456789", required: true },
+        { id: "strasse", type: "text", label: "Straße", placeholder: "Musterstraße", required: true },
+        { id: "hausnummer", type: "text", label: "HNr.", placeholder: "1a", required: true },
+        { id: "plz", type: "text", label: "PLZ", placeholder: "12345", required: true },
+        { id: "ort", type: "text", label: "Ort", placeholder: "Musterstadt", required: true },
+      ],
+    },
+    {
+      id: "consent",
+      title: "Zusammenfassung & Einwilligung",
+      description: "Bitte überprüfen Sie Ihre Angaben und stimmen Sie der Datenverarbeitung zu",
+      questions: [
+        { id: "summary_display", type: "summary", label: "Zusammenfassung", required: false },
+        { id: "datenschutz", type: "consent", label: "Datenschutz Einwilligung", required: true },
+      ],
+    },
+  ],
+  successMessage: {
+    title: "Vielen Dank für Ihre Anfrage!",
+    description: "Wir haben Ihre Elektromobil-Anfrage erhalten und werden uns in Kürze bei Ihnen melden.",
+  },
+}

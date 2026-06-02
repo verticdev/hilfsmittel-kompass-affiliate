@@ -191,7 +191,7 @@ function SupportCarousel() {
   }
 
   return (
-    <section className="bg-gray-50 border-y border-gray-200">
+    <section id="leistungen" className="bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
         {/* Header */}
         <div className="text-center mb-8">
@@ -334,6 +334,22 @@ export function PublicLanding() {
                 />
               </Link>
               
+              {/* Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Leistungen
+                </Link>
+                <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Alle Services
+                </Link>
+                <Link href="#so-gehts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  So funktioniert&apos;s
+                </Link>
+                <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  FAQ
+                </Link>
+              </nav>
+              
               <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
                 <Phone className="w-4 h-4 text-primary" />
                 <span>Kostenlose Beratung</span>
@@ -448,25 +464,6 @@ export function PublicLanding() {
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="bg-white border-b border-gray-100">
-          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-12">
-            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
-                    <benefit.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{benefit.title}</h3>
-                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">{benefit.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Support Carousel Section */}
         <SupportCarousel />
 
@@ -496,7 +493,7 @@ export function PublicLanding() {
         </section>
 
         {/* How it Works Section */}
-        <section className="bg-white">
+        <section id="so-gehts" className="bg-white scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -538,7 +535,7 @@ export function PublicLanding() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-gray-50 border-t border-gray-200">
+        <section id="faq" className="bg-gray-50 border-t border-gray-200 scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -588,6 +585,25 @@ export function PublicLanding() {
                     {faq.answer}
                   </div>
                 </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Elements Section */}
+        <section className="bg-white border-y border-gray-200">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-12">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
+                    <benefit.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{benefit.title}</h3>
+                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">{benefit.description}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
