@@ -695,7 +695,7 @@ export function PublicLanding() {
 
         {/* Trust Elements Section */}
         <section className="bg-white border-y border-gray-200">
-          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-12">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-16 lg:py-20">
             <div className="grid md:grid-cols-3 gap-6 md:gap-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex gap-4">
