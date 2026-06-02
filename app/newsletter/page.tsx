@@ -93,7 +93,7 @@ export default function NewsletterPage() {
             />
             {/* Overlay Badge with Primary/Secondary swap */}
             <div 
-              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg font-bold text-lg shadow-lg"
+              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg font-bold text-lg shadow-lg z-20"
               style={{ 
                 backgroundColor: affiliateConfig.primaryColor,
                 color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
@@ -106,7 +106,7 @@ export default function NewsletterPage() {
           </div>
 
           {/* Value Proposition Box - overlapping image */}
-          <div className="mx-8 -mt-6 relative">
+          <div className="mx-8 -mt-6 relative z-10">
             <div 
               className="rounded-lg p-6 text-center shadow-lg"
               style={{ 
