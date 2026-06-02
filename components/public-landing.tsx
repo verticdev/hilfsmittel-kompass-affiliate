@@ -180,6 +180,8 @@ function ServiceCard({ service, onClick }: { service: typeof services[0]; onClic
 // Support Carousel component
 function SupportCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const currentSlide = carouselSlides[activeIndex]
 
   const goToNext = () => {
@@ -188,6 +190,30 @@ function SupportCarousel() {
 
   const goToPrev = () => {
     setActiveIndex((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length)
+  }
+
+  // Swipe handlers
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      goToNext()
+    } else if (isRightSwipe) {
+      goToPrev()
+    }
   }
 
   return (
@@ -225,11 +251,16 @@ function SupportCarousel() {
         </div>
 
         {/* Carousel Content */}
-        <div className="relative">
-          {/* Navigation Arrows */}
+        <div 
+          className="relative"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Navigation Arrows - hidden on mobile */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:border-secondary transition-colors"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center text-gray-600 hover:bg-gray-50 hover:border-secondary transition-colors"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -237,14 +268,14 @@ function SupportCarousel() {
           
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-secondary shadow-sm flex items-center justify-center text-gray-600 hover:bg-secondary/10 transition-colors"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white border border-secondary shadow-sm items-center justify-center text-gray-600 hover:bg-secondary/10 transition-colors"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Slide Content */}
-          <div className="bg-white rounded-xl overflow-hidden mx-6 md:mx-10">
+          {/* Slide Content - edge-to-edge on mobile */}
+          <div className="bg-white rounded-xl overflow-hidden mx-0 md:mx-10">
             <div className="flex flex-col md:flex-row">
               {/* Image */}
               <div className="md:w-1/2">
@@ -308,6 +339,7 @@ function SupportCarousel() {
 export function PublicLanding() {
   const searchParams = useSearchParams()
   const affiliateConfig = useAffiliate()
+  const [postalCode, setPostalCode] = useState("")
 
   // Save tracking params and track page view when component mounts
   useEffect(() => {
@@ -341,9 +373,6 @@ export function PublicLanding() {
                 </Link>
                 <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   Alle Services
-                </Link>
-                <Link href="#so-gehts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  So funktioniert&apos;s
                 </Link>
                 <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   FAQ
@@ -408,11 +437,13 @@ export function PublicLanding() {
                   <input
                     type="text"
                     placeholder="Ihre Postleitzahl"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                     className="w-full h-12 pl-11 pr-4 rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
                   />
                 </div>
                 <Link 
-                  href="#services"
+                  href={postalCode ? `/start?plz=${encodeURIComponent(postalCode)}` : "/start"}
                   className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg text-base transition-colors"
                 >
                   Beratung starten
@@ -515,48 +546,6 @@ export function PublicLanding() {
           </div>
         </section>
 
-        {/* How it Works Section */}
-        <section id="so-gehts" className="bg-white scroll-mt-16">
-          <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                So einfach geht&apos;s
-              </h2>
-              <p className="mt-2 text-gray-600">
-                In 3 Schritten zu Ihrer Pflegeleistung
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {[
-                {
-                  step: "1",
-                  title: "Leistung auswählen",
-                  description: "Wählen Sie die gewünschte Pflegeleistung aus unserem Angebot",
-                },
-                {
-                  step: "2",
-                  title: "Kurze Fragen beantworten",
-                  description: "Beantworten Sie wenige Fragen zu Ihrer Situation - dauert nur 2 Minuten",
-                },
-                {
-                  step: "3",
-                  title: "Beratung erhalten",
-                  description: "Ein regionaler Experte meldet sich bei Ihnen für eine persönliche Beratung",
-                },
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary text-white font-bold text-xl flex items-center justify-center mx-auto">
-                    {item.step}
-                  </div>
-                  <h3 className="mt-4 font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* FAQ Section */}
         <section id="faq" className="bg-gray-50 border-t border-gray-200 scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
@@ -642,11 +631,11 @@ export function PublicLanding() {
               Viele Leistungen stehen Ihnen zu - wir helfen Ihnen, diese zu beantragen. 
               Kostenlos und unverbindlich.
             </p>
-            <Link 
-              href="#services"
-              className="mt-6 inline-flex h-11 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8 rounded-lg transition-colors"
-            >
-              Jetzt Leistung auswählen
+  <Link
+  href="/start"
+  className="mt-6 inline-flex h-11 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-8 rounded-lg transition-colors"
+  >
+  Jetzt Leistung auswählen
               <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </div>

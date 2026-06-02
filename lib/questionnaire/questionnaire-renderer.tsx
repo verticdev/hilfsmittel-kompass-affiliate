@@ -60,6 +60,11 @@ export function QuestionnaireRenderer({ config }: QuestionnaireRendererProps) {
     if (Object.keys(allParams).length > 0) {
       setTrackingData(allParams as Record<string, string>)
     }
+    // Pre-fill postal code from URL if provided
+    const plzFromUrl = searchParams.get("plz")
+    if (plzFromUrl) {
+      setFormData(prev => ({ ...prev, plz: plzFromUrl }))
+    }
     // Track questionnaire started
     trackQuestionnaireStarted(config.id, config.steps.length)
   }, [searchParams, config.id, config.steps.length])
