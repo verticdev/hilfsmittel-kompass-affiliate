@@ -421,7 +421,7 @@ export function PublicLanding() {
               </div>
               
               {/* Trust badges - single row, no wrapping */}
-              <div className="mt-4 mb-2 md:mt-6 md:mb-0 flex items-center justify-start gap-3 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm text-white/90">
+              <div className="mt-4 md:mt-6 flex items-center justify-start gap-3 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm text-white/90">
                 <div className="flex items-center gap-1 whitespace-nowrap">
                   <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary flex-shrink-0" />
                   <span>100% kostenlos</span>
@@ -438,7 +438,7 @@ export function PublicLanding() {
             </div>
             
             {/* Hero Image - edge-to-edge on mobile, contained on desktop */}
-            <div className="w-[100vw] relative left-[50%] -translate-x-[50%] md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
+            <div className="w-[100vw] relative left-[50%] -translate-x-[50%] -mt-2 md:mt-0 md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
               <Image
                 src="/images/hero-consultation.png"
                 alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
