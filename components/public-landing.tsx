@@ -362,6 +362,62 @@ export function PublicLanding() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="bg-gray-50 border-t border-gray-200">
+          <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                Häufig gestellte Fragen
+              </h2>
+              <p className="mt-2 text-gray-600">
+                Antworten auf die wichtigsten Fragen rund um Pflegeleistungen
+              </p>
+            </div>
+            
+            <div className="max-w-3xl mx-auto space-y-4">
+              {[
+                {
+                  question: "Wer hat Anspruch auf Pflegeleistungen und Zuschüsse?",
+                  answer: "Grundsätzlich haben alle Personen mit einem anerkannten Pflegegrad (1-5) Anspruch auf verschiedene Leistungen der Pflegekasse. Dazu gehören unter anderem Zuschüsse für wohnumfeldverbessernde Maßnahmen (bis zu 4.000€), Pflegehilfsmittel (40€/Monat) und Hausnotruf (25,50€/Monat). Auch ohne Pflegegrad können bestimmte Hilfsmittel über die Krankenkasse beantragt werden."
+                },
+                {
+                  question: "Ist die Beratung wirklich kostenlos?",
+                  answer: "Ja, unsere Beratung ist zu 100% kostenlos und unverbindlich. Wir finanzieren uns über Partnerschaften mit geprüften Anbietern. Für Sie entstehen keine Kosten - weder für die Beratung noch für die Vermittlung. Sie entscheiden selbst, ob Sie ein Angebot annehmen möchten."
+                },
+                {
+                  question: "Wie lange dauert es, bis ich meine Leistung erhalte?",
+                  answer: "Nach Ihrer Anfrage meldet sich innerhalb von 1-2 Werktagen ein regionaler Berater bei Ihnen. Die Bearbeitungszeit bei der Pflegekasse beträgt in der Regel 2-4 Wochen. Bei dringenden Fällen können wir oft eine beschleunigte Bearbeitung erreichen. Pflegehilfsmittel wie die Pflegebox werden meist innerhalb weniger Tage geliefert."
+                },
+                {
+                  question: "Benötige ich einen Pflegegrad für alle Leistungen?",
+                  answer: "Nicht für alle Leistungen ist ein Pflegegrad erforderlich. Hilfsmittel wie Elektromobile oder Elektrorollstühle können auch über die Krankenkasse mit ärztlicher Verordnung beantragt werden. Für Leistungen wie die Pflegebox, Hausnotruf-Zuschuss oder Badumbau-Förderung wird jedoch mindestens Pflegegrad 1 benötigt."
+                },
+                {
+                  question: "Welche Unterlagen benötige ich für die Beantragung?",
+                  answer: "In der Regel benötigen Sie Ihren Pflegebescheid (falls vorhanden), Ihre Versichertenkarte und bei bestimmten Hilfsmitteln eine ärztliche Verordnung. Unser Berater hilft Ihnen dabei, alle notwendigen Unterlagen zusammenzustellen und unterstützt Sie bei der Antragstellung - Sie müssen sich um nichts kümmern."
+                },
+                {
+                  question: "Kann ich mehrere Leistungen gleichzeitig beantragen?",
+                  answer: "Ja, Sie können mehrere Leistungen parallel beantragen. Viele unserer Kunden nutzen beispielsweise die Pflegebox zusammen mit dem Hausnotruf oder kombinieren einen Badumbau mit einem Treppenlift. Unser Berater erstellt mit Ihnen gemeinsam einen Überblick über alle Leistungen, die Ihnen zustehen."
+                },
+              ].map((faq, index) => (
+                <details 
+                  key={index} 
+                  className="group bg-white rounded-lg border border-gray-200 overflow-hidden"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer px-5 py-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+                    <span className="pr-4">{faq.question}</span>
+                    <ChevronRight className="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-90" />
+                  </summary>
+                  <div className="px-5 pb-4 pt-0 text-sm text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="bg-primary">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
