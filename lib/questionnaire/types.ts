@@ -4,6 +4,7 @@ export interface QuestionOption {
   value: string
   label: string
   description?: string
+  badge?: string
 }
 
 export interface ProductOption {
