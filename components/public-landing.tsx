@@ -180,6 +180,8 @@ function ServiceCard({ service, onClick }: { service: typeof services[0]; onClic
 // Support Carousel component
 function SupportCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const currentSlide = carouselSlides[activeIndex]
 
   const goToNext = () => {
@@ -188,6 +190,30 @@ function SupportCarousel() {
 
   const goToPrev = () => {
     setActiveIndex((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length)
+  }
+
+  // Swipe handlers
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      goToNext()
+    } else if (isRightSwipe) {
+      goToPrev()
+    }
   }
 
   return (
@@ -225,11 +251,16 @@ function SupportCarousel() {
         </div>
 
         {/* Carousel Content */}
-        <div className="relative">
-          {/* Navigation Arrows */}
+        <div 
+          className="relative"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Navigation Arrows - hidden on mobile */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:border-secondary transition-colors"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center text-gray-600 hover:bg-gray-50 hover:border-secondary transition-colors"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -237,14 +268,14 @@ function SupportCarousel() {
           
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-secondary shadow-sm flex items-center justify-center text-gray-600 hover:bg-secondary/10 transition-colors"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white border border-secondary shadow-sm items-center justify-center text-gray-600 hover:bg-secondary/10 transition-colors"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Slide Content */}
-          <div className="bg-white rounded-xl overflow-hidden mx-6 md:mx-10">
+          {/* Slide Content - edge-to-edge on mobile */}
+          <div className="bg-white rounded-xl overflow-hidden mx-0 md:mx-10">
             <div className="flex flex-col md:flex-row">
               {/* Image */}
               <div className="md:w-1/2">
