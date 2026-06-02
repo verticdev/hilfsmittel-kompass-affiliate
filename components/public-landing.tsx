@@ -191,7 +191,7 @@ function SupportCarousel() {
   }
 
   return (
-    <section className="bg-gray-50 border-y border-gray-200">
+    <section id="leistungen" className="bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
         {/* Header */}
         <div className="text-center mb-8">
@@ -333,6 +333,22 @@ export function PublicLanding() {
                   className="object-contain"
                 />
               </Link>
+              
+              {/* Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Leistungen
+                </Link>
+                <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Alle Services
+                </Link>
+                <Link href="#so-gehts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  So funktioniert&apos;s
+                </Link>
+                <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  FAQ
+                </Link>
+              </nav>
               
               <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
                 <Phone className="w-4 h-4 text-primary" />
@@ -477,7 +493,7 @@ export function PublicLanding() {
         </section>
 
         {/* How it Works Section */}
-        <section className="bg-white">
+        <section id="so-gehts" className="bg-white scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -519,7 +535,7 @@ export function PublicLanding() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-gray-50 border-t border-gray-200">
+        <section id="faq" className="bg-gray-50 border-t border-gray-200 scroll-mt-16">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
