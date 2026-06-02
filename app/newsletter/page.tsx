@@ -42,43 +42,23 @@ export default function NewsletterPage() {
             <a href="#" style={{ color: affiliateConfig.primaryColor }}>hier</a>.
           </div>
 
-          {/* Newsletter Header - Company name and logo */}
-          <div className="px-8 py-6 flex items-center justify-between">
-            <span 
-              className="text-xl font-semibold"
-              style={{ color: affiliateConfig.primaryColor }}
-            >
-              {affiliateConfig.partnerName}
-            </span>
+          {/* Single Primary-Colored Header with title and logo */}
+          <div 
+            className="px-8 py-5 flex items-center justify-between"
+            style={{ backgroundColor: affiliateConfig.primaryColor }}
+          >
+            <h1 className="text-lg md:text-xl font-bold text-white">
+              Mehr Lebensqualität & Selbständigkeit im Alter
+            </h1>
             {affiliateConfig.logo && (
               <Image
                 src={affiliateConfig.logo}
                 alt={affiliateConfig.partnerName}
                 width={60}
                 height={60}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain bg-white rounded p-1"
               />
             )}
-          </div>
-
-          {/* Exclusive Partnership Banner */}
-          <div 
-            className="px-8 py-4 text-center"
-            style={{ backgroundColor: `${affiliateConfig.primaryColor}10` }}
-          >
-            <p className="text-sm font-medium" style={{ color: affiliateConfig.primaryColor }}>
-              Exklusiv für {affiliateConfig.partnerName}-Kunden
-            </p>
-          </div>
-
-          {/* Attention-Grabbing Headline Banner */}
-          <div 
-            className="px-8 py-5"
-            style={{ backgroundColor: affiliateConfig.primaryColor }}
-          >
-            <h1 className="text-xl md:text-2xl font-bold text-white text-center">
-              Ihre Vorteile durch unsere Partnerschaft mit Senioren Focus
-            </h1>
           </div>
 
           {/* Hero Image */}
@@ -89,13 +69,52 @@ export default function NewsletterPage() {
               width={700}
               height={350}
               className="w-full h-auto object-cover"
+              style={{ paddingTop: "10px" }}
             />
-            {/* Overlay Badge */}
+            {/* Overlay Badge with Primary/Secondary swap */}
             <div 
-              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg text-white font-bold text-lg"
-              style={{ backgroundColor: affiliateConfig.primaryColor }}
+              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg font-bold text-lg shadow-lg z-20"
+              style={{ 
+                backgroundColor: affiliateConfig.primaryColor,
+                color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? "#000000" 
+                  : affiliateConfig.secondaryColor
+              }}
             >
-              EXKLUSIV FÜR SIE
+              EXKLUSIVES ANGEBOT
+            </div>
+          </div>
+
+          {/* Value Proposition Box - overlapping image */}
+          <div className="mx-8 -mt-6 relative z-10">
+            <div 
+              className="rounded-lg p-6 text-center shadow-lg"
+              style={{ 
+                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? affiliateConfig.primaryColor 
+                  : affiliateConfig.secondaryColor 
+              }}
+            >
+              <p 
+                className="text-2xl md:text-3xl font-bold mb-1"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
+                Jetzt alle Leistungen sichern!
+              </p>
+              <p 
+                className="text-sm opacity-90"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
+                Pflegehilfsmittel, Hausnotruf, Treppenlift & mehr - kostenfrei beraten lassen
+              </p>
             </div>
           </div>
 
@@ -116,17 +135,26 @@ export default function NewsletterPage() {
               Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.partnerName}-Kunde 
-              völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
+            <p className="text-gray-700 mb-4 leading-relaxed" style={{ fontSize: "18px" }}>
+              als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf eine 
+              besondere Partnerschaft aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
+              wir Ihnen ab sofort den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> - 
+              Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
-            {/* First CTA */}
+            {/* First CTA with Secondary Color accent */}
             <div className="text-center my-6">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: affiliateConfig.primaryColor }}
+                className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
+                style={{ 
+                  backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? affiliateConfig.primaryColor 
+                    : affiliateConfig.secondaryColor,
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor
+                }}
               >
                 Meine Vorteile entdecken
                 <ArrowRight className="w-5 h-5" />
@@ -195,33 +223,32 @@ export default function NewsletterPage() {
               </div>
             </div>
 
-            {/* Urgency Section */}
+            {/* Urgency Section with Secondary Color */}
             <div 
               className="rounded-lg p-5 mb-8 border-l-4"
               style={{ 
-                borderColor: affiliateConfig.primaryColor,
-                backgroundColor: `${affiliateConfig.primaryColor}10`
+                borderColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? affiliateConfig.primaryColor 
+                  : affiliateConfig.secondaryColor,
+                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? `${affiliateConfig.primaryColor}10`
+                  : `${affiliateConfig.secondaryColor}30`
               }}
             >
-              <p className="font-bold text-gray-900 mb-2">
+              <p 
+                className="font-bold mb-2"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? affiliateConfig.primaryColor 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
                 Wussten Sie schon?
               </p>
               <p className="text-gray-700">
                 Viele Pflegeleistungen werden <strong>nicht beantragt</strong>, obwohl ein Anspruch besteht. 
                 Lassen Sie sich jetzt kostenlos von unseren Experten beraten!
               </p>
-            </div>
-
-            {/* Main CTA Button */}
-            <div className="text-center mb-8">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-10 py-5 text-white font-bold rounded-lg text-xl shadow-xl hover:opacity-90 transition-all hover:scale-105"
-                style={{ backgroundColor: affiliateConfig.primaryColor }}
-              >
-                Jetzt Leistungen entdecken
-                <ArrowRight className="w-6 h-6" />
-              </a>
             </div>
 
             {/* Trust Elements */}
@@ -249,8 +276,7 @@ export default function NewsletterPage() {
                 Ihr {affiliateConfig.partnerName} Team
               </p>
               <p className="text-gray-600 text-sm italic">
-                P.S.: Haben Sie Fragen? Unsere Experten beraten Sie gerne telefonisch – 
-                natürlich ebenfalls kostenlos!
+                P.S.: Unsere Experten beraten Sie gerne telefonisch – natürlich ebenfalls kostenlos!
               </p>
             </div>
           </div>
@@ -312,8 +338,10 @@ export default function NewsletterPage() {
               Bitte antworten Sie nicht direkt auf diese E-Mail.
             </p>
             <p className="text-xs text-gray-500 leading-relaxed">
-              Diese E-Mail wurde an max.mustermann@beispiel.de gesendet. 
-              <a href="#" className="underline ml-1">Newsletter abbestellen</a> | 
+              Diese E-Mail wurde an max.mustermann@beispiel.de gesendet.
+            </p>
+            <p className="text-xs text-gray-500 leading-relaxed mt-1">
+              <a href="#" className="underline">Newsletter abbestellen</a> | 
               <a href="#" className="underline ml-1">Datenschutz</a> | 
               <a href="#" className="underline ml-1">Impressum</a>
             </p>
