@@ -363,8 +363,8 @@ export function PublicLanding() {
         <section className="bg-primary overflow-hidden">
           <div className="relative flex flex-col md:flex-row md:items-end">
             {/* Left: Content */}
-            <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 py-6 md:py-8">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-sm text-white mb-3">
+            <div className="relative z-10 w-full md:w-[55%] px-6 sm:px-10 lg:px-12 py-8 md:py-10">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-sm text-white mb-4">
                 <CheckCircle2 className="w-4 h-4 text-secondary" />
                 <span>Exklusiv für EDEKA-Kunden</span>
               </div>
@@ -374,54 +374,56 @@ export function PublicLanding() {
                 - <span className="text-secondary">einfach beantragt</span>
               </h1>
               
-              <p className="mt-3 text-sm md:text-base text-white/90 leading-relaxed max-w-sm">
+              <p className="mt-4 text-sm md:text-base text-white/90 leading-relaxed max-w-md">
                 Wir helfen Ihnen, alle Ansprüche und Zuschüsse zu nutzen, 
                 die Ihnen zustehen - für mehr Lebensqualität zuhause.
                 Kostenlos und unverbindlich.
               </p>
               
-              <div className="mt-5 flex flex-col sm:flex-row sm:items-stretch gap-0 max-w-sm">
-                <div className="relative flex-1">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              {/* Input and CTA - stacked on mobile, inline on desktop */}
+              <div className="mt-6 flex flex-col gap-3 max-w-md">
+                <div className="relative">
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Ihre Postleitzahl"
-                    className="w-full h-10 pl-9 pr-3 rounded-md sm:rounded-r-none border-0 bg-white text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-secondary outline-none text-sm"
+                    className="w-full h-12 pl-11 pr-4 rounded-lg border-0 bg-white text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-secondary outline-none text-base"
                   />
                 </div>
                 <Link 
-                href="#services"
-                className="inline-flex h-10 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-5 whitespace-nowrap rounded-md sm:rounded-l-none text-sm transition-colors"
-              >
-                Beratung starten
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
+                  href="#services"
+                  className="inline-flex h-12 items-center justify-center bg-secondary text-primary hover:bg-secondary/90 font-semibold px-6 rounded-lg text-base transition-colors"
+                >
+                  Beratung starten
+                  <ChevronRight className="w-5 h-5 ml-1" />
+                </Link>
               </div>
               
-              <div className="mt-6 mb-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-white/80">
+              {/* Trust badges - single row */}
+              <div className="mt-6 flex items-center justify-start gap-4 md:gap-6 text-xs md:text-sm text-white/90">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary" />
+                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
                   <span>100% kostenlos</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary" />
+                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
                   <span>Unverbindlich</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary" />
+                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
                   <span>Deutschlandweit</span>
                 </div>
               </div>
             </div>
             
-            {/* Right: Hero Image - stays within container */}
-            <div className="hidden md:flex md:w-[45%] items-end justify-end">
+            {/* Hero Image - edge-to-edge on mobile, contained on desktop */}
+            <div className="w-[100vw] relative left-[50%] -translate-x-[50%] md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
               <Image
                 src="/images/hero-consultation.png"
                 alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
                 width={550}
                 height={450}
-                className="w-full h-auto max-h-[480px] object-contain object-bottom"
+                className="w-full h-auto max-h-[300px] md:max-h-[480px] object-cover object-top md:object-contain md:object-bottom"
                 priority
               />
             </div>

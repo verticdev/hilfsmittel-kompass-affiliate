@@ -843,20 +843,12 @@ export function QuestionnaireRenderer({ config }: QuestionnaireRendererProps) {
           <div className="max-w-4xl mx-auto px-4 py-2.5">
             <div className="flex items-center justify-between">
             <Link href={buildUrlWithTracking("/", searchParams)} className="flex items-center gap-2.5">
-              <div className="bg-white rounded-xl shadow-sm flex items-center justify-center p-1.5 border">
-                <Image
-                  src={BRAND_ASSETS.icon.main || "/placeholder.svg"}
-                  alt={BRAND_ASSETS.icon.alt}
-                  width={28}
-                  height={28}
-                />
-              </div>
               <Image
                 src={BRAND_ASSETS.logo.main || "/placeholder.svg"}
                 alt={BRAND_ASSETS.logo.alt}
                 width={130}
-                height={30}
-                style={{ height: 30, width: "auto" }}
+                height={40}
+                style={{ height: 40, width: "auto" }}
               />
             </Link>
             </div>
@@ -1025,20 +1017,12 @@ export function QuestionnaireRenderer({ config }: QuestionnaireRendererProps) {
         <div className="max-w-4xl mx-auto px-4 py-2.5">
           <div className="flex items-center justify-between">
             <Link href={buildUrlWithTracking("/", searchParams)} className="flex items-center gap-2.5">
-              <div className="bg-white rounded-xl shadow-sm flex items-center justify-center p-1.5 border">
-                <Image
-                  src={BRAND_ASSETS.icon.main || "/placeholder.svg"}
-                  alt={BRAND_ASSETS.icon.alt}
-                  width={28}
-                  height={28}
-                />
-              </div>
               <Image
                 src={BRAND_ASSETS.logo.main || "/placeholder.svg"}
                 alt={BRAND_ASSETS.logo.alt}
                 width={130}
-                height={30}
-                style={{ height: 30, width: "auto" }}
+                height={40}
+                style={{ height: 40, width: "auto" }}
               />
             </Link>
           </div>
