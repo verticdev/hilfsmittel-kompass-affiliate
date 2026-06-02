@@ -251,25 +251,6 @@ export default function NewsletterPage() {
               </p>
             </div>
 
-            {/* Main CTA Button with Secondary Color */}
-            <div className="text-center mb-8">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-10 py-5 font-bold rounded-lg text-xl shadow-xl hover:opacity-90 transition-all hover:scale-105"
-                style={{ 
-                  backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
-                    ? affiliateConfig.primaryColor 
-                    : affiliateConfig.secondaryColor,
-                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
-                    ? "#FFFFFF" 
-                    : affiliateConfig.primaryColor
-                }}
-              >
-                Jetzt Leistungen entdecken
-                <ArrowRight className="w-6 h-6" />
-              </a>
-            </div>
-
             {/* Trust Elements */}
             <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
