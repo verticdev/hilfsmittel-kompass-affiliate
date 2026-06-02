@@ -593,6 +593,37 @@ export function PublicLanding() {
                     Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
                   </p>
                 </div>
+                
+                {/* Animated Arrow pointing to map - desktop only */}
+                <div className="hidden lg:flex justify-end mt-4 pr-4">
+                  <svg 
+                    width="120" 
+                    height="60" 
+                    viewBox="0 0 120 60" 
+                    className="text-primary animate-bounce-subtle"
+                    style={{ animationDuration: '2s' }}
+                  >
+                    {/* Curved arrow path */}
+                    <path 
+                      d="M10 50 Q 40 50, 60 35 Q 80 20, 100 25" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="5,5"
+                      className="animate-dash"
+                    />
+                    {/* Arrow head */}
+                    <path 
+                      d="M95 18 L100 25 L93 30" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
               </div>
               
               {/* Right: Germany Map */}

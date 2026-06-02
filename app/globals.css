@@ -343,3 +343,27 @@ html {
     @apply bg-background text-foreground font-sans;
   }
 }
+
+/* Animated arrow pointing to map */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-dash {
+  animation: dash 0.8s linear infinite;
+}
