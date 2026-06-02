@@ -67,7 +67,7 @@ export default function NewsletterPage() {
             style={{ backgroundColor: `${affiliateConfig.primaryColor}10` }}
           >
             <p className="text-sm font-medium" style={{ color: affiliateConfig.primaryColor }}>
-              Exklusiv für {affiliateConfig.companyName}-Kunden
+              Exklusiv für {affiliateConfig.partnerName}-Kunden
             </p>
           </div>
 
@@ -110,14 +110,14 @@ export default function NewsletterPage() {
             </h2>
 
             <p className="text-gray-700 mb-4 leading-relaxed text-lg">
-              als geschätzter <strong>{affiliateConfig.companyName}-Kunde</strong> möchten wir Sie auf eine 
+              als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf eine 
               besondere Partnerschaft aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
               wir Ihnen ab sofort den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> - 
               Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
             <p className="text-gray-700 mb-4 leading-relaxed">
-              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.companyName}-Kunde 
+              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.partnerName}-Kunde 
               völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
             </p>
 
@@ -131,7 +131,7 @@ export default function NewsletterPage() {
                 Meine Vorteile entdecken
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <p className="text-sm text-gray-500 mt-2">100% kostenlos - exklusiv für {affiliateConfig.companyName}-Kunden</p>
+              <p className="text-sm text-gray-500 mt-2">100% kostenlos - exklusiv für {affiliateConfig.partnerName}-Kunden</p>
             </div>
 
             {/* Benefits with Icons */}
