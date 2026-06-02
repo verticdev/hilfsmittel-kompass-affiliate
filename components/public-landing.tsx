@@ -597,15 +597,15 @@ export function PublicLanding() {
               
               {/* Static curved arrow overlay - desktop only, positioned between columns */}
               <svg 
-                width="120" 
+                width="180" 
                 height="80" 
-                viewBox="0 0 120 80" 
-                className="hidden lg:block absolute left-[calc(50%-60px)] bottom-16 z-10"
+                viewBox="0 0 180 80" 
+                className="hidden lg:block absolute left-[calc(50%-40px)] bottom-12 z-10"
                 style={{ color: affiliateConfig.primaryColor }}
               >
                 {/* Curved arrow path pointing right toward map */}
                 <path 
-                  d="M10 60 Q 40 55, 60 40 Q 80 25, 105 30" 
+                  d="M0 55 Q 50 50, 90 35 Q 130 20, 165 28" 
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="2.5"
@@ -614,7 +614,7 @@ export function PublicLanding() {
                 />
                 {/* Arrow head */}
                 <path 
-                  d="M98 22 L108 30 L98 38" 
+                  d="M158 20 L170 28 L158 36" 
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="2.5"
