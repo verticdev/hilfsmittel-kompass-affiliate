@@ -48,7 +48,7 @@ export default function NewsletterPage() {
             style={{ backgroundColor: affiliateConfig.primaryColor }}
           >
             <h1 className="text-lg md:text-xl font-bold text-white">
-              Mehr Lebensqualität, Selbständigkeit & Sicherheit im Alter
+              Mehr Lebensqualität & Selbständigkeit im Alter
             </h1>
             {affiliateConfig.logo && (
               <Image
