@@ -369,13 +369,16 @@ export function PublicLanding() {
               {/* Navigation - Desktop */}
               <nav className="hidden md:flex items-center gap-6">
                 <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  Leistungen
+                  Unsere Leistungen
                 </Link>
-                <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  Alle Services
+                <Link href="#so-funktionierts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  So funktioniert&apos;s
+                </Link>
+                <Link href="#ueber-uns" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                  Über uns
                 </Link>
                 <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  FAQ
+                  Häufige Fragen
                 </Link>
               </nav>
               
