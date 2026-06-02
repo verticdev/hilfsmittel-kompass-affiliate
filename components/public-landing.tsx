@@ -384,10 +384,10 @@ export function PublicLanding() {
               
               {/* Right side - Desktop: phone text, Mobile: Anrufen button + Menu */}
               <div className="flex items-center gap-3">
-                {/* Desktop phone number */}
-                <a href="tel:+49800123456" className="hidden md:flex items-center gap-2 text-sm text-gray-700 hover:text-primary transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
-                  <span className="font-medium">+49 800 123 456</span>
+                {/* Desktop phone number - prominent with yellow underline */}
+                <a href="tel:+49800123456" className="hidden md:flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                  <Phone className="w-5 h-5" />
+                  <span className="font-semibold text-base border-b-2 border-secondary">+49 800 123 456</span>
                 </a>
                 
                 {/* Mobile: Anrufen button */}
