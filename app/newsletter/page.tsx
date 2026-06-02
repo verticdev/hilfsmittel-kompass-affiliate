@@ -42,43 +42,23 @@ export default function NewsletterPage() {
             <a href="#" style={{ color: affiliateConfig.primaryColor }}>hier</a>.
           </div>
 
-          {/* Newsletter Header - Company name and logo */}
-          <div className="px-8 py-6 flex items-center justify-between">
-            <span 
-              className="text-xl font-semibold"
-              style={{ color: affiliateConfig.primaryColor }}
-            >
-              {affiliateConfig.partnerName}
-            </span>
+          {/* Single Primary-Colored Header with title and logo */}
+          <div 
+            className="px-8 py-5 flex items-center justify-between"
+            style={{ backgroundColor: affiliateConfig.primaryColor }}
+          >
+            <h1 className="text-lg md:text-xl font-bold text-white">
+              Ihre Vorteile mit Senioren Focus
+            </h1>
             {affiliateConfig.logo && (
               <Image
                 src={affiliateConfig.logo}
                 alt={affiliateConfig.partnerName}
                 width={60}
                 height={60}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain bg-white rounded p-1"
               />
             )}
-          </div>
-
-          {/* Exclusive Partnership Banner */}
-          <div 
-            className="px-8 py-4 text-center"
-            style={{ backgroundColor: `${affiliateConfig.primaryColor}10` }}
-          >
-            <p className="text-sm font-medium" style={{ color: affiliateConfig.primaryColor }}>
-              Exklusiv für {affiliateConfig.partnerName}-Kunden
-            </p>
-          </div>
-
-          {/* Attention-Grabbing Headline Banner */}
-          <div 
-            className="px-8 py-5"
-            style={{ backgroundColor: affiliateConfig.primaryColor }}
-          >
-            <h1 className="text-xl md:text-2xl font-bold text-white text-center">
-              Ihre Vorteile durch unsere Partnerschaft mit Senioren Focus
-            </h1>
           </div>
 
           {/* Hero Image */}
