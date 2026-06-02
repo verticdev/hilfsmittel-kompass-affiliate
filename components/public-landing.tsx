@@ -580,45 +580,44 @@ export function PublicLanding() {
                   </div>
                 </div>
                 
-                {/* Partner Badge and instruction */}
-                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                  <Image
-                    src="/images/senioren-focus-badge.png"
-                    alt="Senioren Focus - Offizieller Partner"
-                    width={56}
-                    height={56}
-                    className="flex-shrink-0"
-                  />
-                  <p className="text-sm text-gray-600 max-w-xs">
-                    Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
-                  </p>
-                </div>
-                
-                {/* Animated Arrow pointing to map - desktop only */}
-                <div className="hidden lg:flex justify-end mt-4 pr-4">
+                {/* Partner Badge and instruction with arrow */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg flex-1">
+                    <Image
+                      src="/images/senioren-focus-badge.png"
+                      alt="Senioren Focus - Offizieller Partner"
+                      width={56}
+                      height={56}
+                      className="flex-shrink-0"
+                    />
+                    <p className="text-sm text-gray-600 max-w-xs">
+                      Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
+                    </p>
+                  </div>
+                  
+                  {/* Static curved arrow pointing to map - desktop only */}
                   <svg 
-                    width="120" 
-                    height="60" 
-                    viewBox="0 0 120 60" 
-                    className="text-primary animate-bounce-subtle"
-                    style={{ animationDuration: '2s' }}
+                    width="80" 
+                    height="50" 
+                    viewBox="0 0 80 50" 
+                    className="hidden lg:block flex-shrink-0"
+                    style={{ color: affiliateConfig.primaryColor }}
                   >
                     {/* Curved arrow path */}
                     <path 
-                      d="M10 50 Q 40 50, 60 35 Q 80 20, 100 25" 
+                      d="M5 40 Q 25 40, 40 30 Q 55 20, 65 22" 
                       fill="none" 
                       stroke="currentColor" 
-                      strokeWidth="2.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
-                      strokeDasharray="5,5"
-                      className="animate-dash"
+                      strokeDasharray="4,4"
                     />
                     {/* Arrow head */}
                     <path 
-                      d="M95 18 L100 25 L93 30" 
+                      d="M60 16 L68 22 L60 28" 
                       fill="none" 
                       stroke="currentColor" 
-                      strokeWidth="2.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
