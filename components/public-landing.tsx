@@ -438,7 +438,7 @@ export function PublicLanding() {
             </div>
             
             {/* Hero Image - edge-to-edge on mobile, contained on desktop */}
-            <div className="w-[100vw] relative left-[50%] -translate-x-[50%] -mt-2 md:mt-0 md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
+            <div className="w-[100vw] relative left-[50%] -translate-x-[50%] -mt-4 md:mt-0 md:w-[45%] md:static md:translate-x-0 md:flex md:items-end md:justify-end">
               <Image
                 src="/images/hero-consultation.png"
                 alt="EDEKA Pflegeberatung - Persönliche Beratung zu Hause"
