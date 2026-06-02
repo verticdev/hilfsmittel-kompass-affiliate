@@ -550,7 +550,7 @@ export function PublicLanding() {
         {/* Regional Search Section */}
         <section id="regionale-suche" className="bg-white border-t border-gray-200 scroll-mt-16">
           <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-14">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+            <div className="relative flex flex-col lg:flex-row lg:items-center lg:gap-12">
               {/* Left: Text Content */}
               <div className="lg:w-1/2 mb-8 lg:mb-0">
                 <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-3 py-1.5 text-sm text-primary mb-4">
@@ -580,50 +580,48 @@ export function PublicLanding() {
                   </div>
                 </div>
                 
-                {/* Partner Badge and instruction with arrow */}
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg flex-1">
-                    <Image
-                      src="/images/senioren-focus-badge.png"
-                      alt="Senioren Focus - Offizieller Partner"
-                      width={56}
-                      height={56}
-                      className="flex-shrink-0"
-                    />
-                    <p className="text-sm text-gray-600 max-w-xs">
-                      Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
-                    </p>
-                  </div>
-                  
-                  {/* Static curved arrow pointing to map - desktop only */}
-                  <svg 
-                    width="80" 
-                    height="50" 
-                    viewBox="0 0 80 50" 
-                    className="hidden lg:block flex-shrink-0"
-                    style={{ color: affiliateConfig.primaryColor }}
-                  >
-                    {/* Curved arrow path */}
-                    <path 
-                      d="M5 40 Q 25 40, 40 30 Q 55 20, 65 22" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeDasharray="4,4"
-                    />
-                    {/* Arrow head */}
-                    <path 
-                      d="M60 16 L68 22 L60 28" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                {/* Partner Badge and instruction */}
+                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+                  <Image
+                    src="/images/senioren-focus-badge.png"
+                    alt="Senioren Focus - Offizieller Partner"
+                    width={56}
+                    height={56}
+                    className="flex-shrink-0"
+                  />
+                  <p className="text-sm text-gray-600 max-w-xs">
+                    Klicken Sie auf Ihr Bundesland, um einen Fachberater in Ihrer Region zu finden.
+                  </p>
                 </div>
               </div>
+              
+              {/* Static curved arrow overlay - desktop only, positioned between columns */}
+              <svg 
+                width="120" 
+                height="80" 
+                viewBox="0 0 120 80" 
+                className="hidden lg:block absolute left-[calc(50%-60px)] bottom-16 z-10"
+                style={{ color: affiliateConfig.primaryColor }}
+              >
+                {/* Curved arrow path pointing right toward map */}
+                <path 
+                  d="M10 60 Q 40 55, 60 40 Q 80 25, 105 30" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeDasharray="6,4"
+                />
+                {/* Arrow head */}
+                <path 
+                  d="M98 22 L108 30 L98 38" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               
               {/* Right: Germany Map */}
               <div className="lg:w-1/2">
