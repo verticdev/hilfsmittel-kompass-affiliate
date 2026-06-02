@@ -89,20 +89,19 @@ export default function NewsletterPage() {
               width={700}
               height={350}
               className="w-full h-auto object-cover"
+              style={{ paddingTop: "10px" }}
             />
-            {/* Overlay Badge with Secondary Color */}
+            {/* Overlay Badge with Primary/Secondary swap */}
             <div 
               className="absolute bottom-4 left-4 px-4 py-2 rounded-lg font-bold text-lg shadow-lg"
               style={{ 
-                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
-                  ? affiliateConfig.primaryColor 
-                  : affiliateConfig.secondaryColor,
+                backgroundColor: affiliateConfig.primaryColor,
                 color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
-                  ? "#FFFFFF" 
-                  : affiliateConfig.primaryColor
+                  ? "#000000" 
+                  : affiliateConfig.secondaryColor
               }}
             >
-              100% KOSTENLOS
+              EXKLUSIVES ANGEBOT
             </div>
           </div>
 
@@ -156,9 +155,11 @@ export default function NewsletterPage() {
               Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
-            <p className="text-gray-700 mb-4 leading-relaxed">
-              <strong>Das Beste daran?</strong> Die Beratung ist für Sie als {affiliateConfig.partnerName}-Kunde 
-              völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
+            <p className="text-gray-700 mb-4 leading-relaxed" style={{ fontSize: "18px" }}>
+              als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf eine 
+              besondere Partnerschaft aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
+              wir Ihnen ab sofort den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> - 
+              Ihren persönlichen Wegweiser zu allen Pflegeleistungen, die Ihnen zustehen!
             </p>
 
             {/* First CTA with Secondary Color accent */}
@@ -314,8 +315,7 @@ export default function NewsletterPage() {
                 Ihr {affiliateConfig.partnerName} Team
               </p>
               <p className="text-gray-600 text-sm italic">
-                P.S.: Haben Sie Fragen? Unsere Experten beraten Sie gerne telefonisch – 
-                natürlich ebenfalls kostenlos!
+                P.S.: Unsere Experten beraten Sie gerne telefonisch – natürlich ebenfalls kostenlos!
               </p>
             </div>
           </div>
