@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Smartphone } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Smartphone, Menu } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
@@ -334,7 +334,7 @@ export function PublicLanding() {
                 />
               </Link>
               
-              {/* Navigation */}
+              {/* Navigation - Desktop */}
               <nav className="hidden md:flex items-center gap-6">
                 <Link href="#leistungen" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   Leistungen
@@ -350,9 +350,30 @@ export function PublicLanding() {
                 </Link>
               </nav>
               
-              <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>Kostenlose Beratung</span>
+              {/* Right side - Desktop: phone text, Mobile: Anrufen button + Menu */}
+              <div className="flex items-center gap-3">
+                {/* Desktop phone text */}
+                <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
+                  <Phone className="w-4 h-4 text-primary" />
+                  <span>Kostenlose Beratung</span>
+                </div>
+                
+                {/* Mobile: Anrufen button */}
+                <a 
+                  href="tel:+4930123456789" 
+                  className="md:hidden inline-flex items-center gap-1.5 bg-secondary hover:bg-secondary/90 text-primary font-semibold px-3 py-2 rounded-full text-sm transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>Anrufen</span>
+                </a>
+                
+                {/* Mobile: Hamburger menu */}
+                <button 
+                  className="md:hidden p-2 text-gray-700 hover:text-primary transition-colors"
+                  aria-label="Menü öffnen"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
               </div>
             </div>
         </div>
@@ -399,18 +420,18 @@ export function PublicLanding() {
                 </Link>
               </div>
               
-              {/* Trust badges - single row */}
-              <div className="mt-6 flex items-center justify-start gap-4 md:gap-6 text-xs md:text-sm text-white/90">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
+              {/* Trust badges - single row, no wrapping */}
+              <div className="mt-6 flex items-center justify-start gap-3 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm text-white/90">
+                <div className="flex items-center gap-1 whitespace-nowrap">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary flex-shrink-0" />
                   <span>100% kostenlos</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
+                <div className="flex items-center gap-1 whitespace-nowrap">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary flex-shrink-0" />
                   <span>Unverbindlich</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" />
+                <div className="flex items-center gap-1 whitespace-nowrap">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary flex-shrink-0" />
                   <span>Deutschlandweit</span>
                 </div>
               </div>
