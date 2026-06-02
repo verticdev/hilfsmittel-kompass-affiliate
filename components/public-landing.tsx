@@ -431,7 +431,7 @@ export function PublicLanding() {
               </p>
               
               {/* Input and CTA - stacked on mobile, inline on desktop */}
-              <div className="mt-6 flex flex-col md:flex-row md:items-stretch gap-3 md:gap-0 max-w-md md:max-w-lg">
+              <div className="mt-6 flex flex-col md:flex-row md:items-stretch gap-3 md:gap-0 max-w-sm md:max-w-md">
                 <div className="relative flex-1">
                   <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
