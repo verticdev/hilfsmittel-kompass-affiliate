@@ -90,12 +90,52 @@ export default function NewsletterPage() {
               height={350}
               className="w-full h-auto object-cover"
             />
-            {/* Overlay Badge */}
+            {/* Overlay Badge with Secondary Color */}
             <div 
-              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg text-white font-bold text-lg"
-              style={{ backgroundColor: affiliateConfig.primaryColor }}
+              className="absolute bottom-4 left-4 px-4 py-2 rounded-lg font-bold text-lg shadow-lg"
+              style={{ 
+                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? affiliateConfig.primaryColor 
+                  : affiliateConfig.secondaryColor,
+                color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? "#FFFFFF" 
+                  : affiliateConfig.primaryColor
+              }}
             >
-              EXKLUSIV FÜR SIE
+              100% KOSTENLOS
+            </div>
+          </div>
+
+          {/* Value Proposition Box - overlapping image */}
+          <div className="mx-8 -mt-6 relative z-10">
+            <div 
+              className="rounded-lg p-6 text-center shadow-lg"
+              style={{ 
+                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? affiliateConfig.primaryColor 
+                  : affiliateConfig.secondaryColor 
+              }}
+            >
+              <p 
+                className="text-2xl md:text-3xl font-bold mb-1"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
+                Jetzt alle Leistungen sichern!
+              </p>
+              <p 
+                className="text-sm opacity-90"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
+                Pflegehilfsmittel, Hausnotruf, Treppenlift & mehr - kostenfrei beraten lassen
+              </p>
             </div>
           </div>
 
@@ -121,12 +161,19 @@ export default function NewsletterPage() {
               völlig kostenlos und unverbindlich. Unsere Experten helfen Ihnen, keine Leistung zu verpassen.
             </p>
 
-            {/* First CTA */}
+            {/* First CTA with Secondary Color accent */}
             <div className="text-center my-6">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: affiliateConfig.primaryColor }}
+                className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
+                style={{ 
+                  backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? affiliateConfig.primaryColor 
+                    : affiliateConfig.secondaryColor,
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor
+                }}
               >
                 Meine Vorteile entdecken
                 <ArrowRight className="w-5 h-5" />
@@ -195,15 +242,26 @@ export default function NewsletterPage() {
               </div>
             </div>
 
-            {/* Urgency Section */}
+            {/* Urgency Section with Secondary Color */}
             <div 
               className="rounded-lg p-5 mb-8 border-l-4"
               style={{ 
-                borderColor: affiliateConfig.primaryColor,
-                backgroundColor: `${affiliateConfig.primaryColor}10`
+                borderColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? affiliateConfig.primaryColor 
+                  : affiliateConfig.secondaryColor,
+                backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                  ? `${affiliateConfig.primaryColor}10`
+                  : `${affiliateConfig.secondaryColor}30`
               }}
             >
-              <p className="font-bold text-gray-900 mb-2">
+              <p 
+                className="font-bold mb-2"
+                style={{ 
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? affiliateConfig.primaryColor 
+                    : affiliateConfig.primaryColor 
+                }}
+              >
                 Wussten Sie schon?
               </p>
               <p className="text-gray-700">
@@ -212,12 +270,19 @@ export default function NewsletterPage() {
               </p>
             </div>
 
-            {/* Main CTA Button */}
+            {/* Main CTA Button with Secondary Color */}
             <div className="text-center mb-8">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-10 py-5 text-white font-bold rounded-lg text-xl shadow-xl hover:opacity-90 transition-all hover:scale-105"
-                style={{ backgroundColor: affiliateConfig.primaryColor }}
+                className="inline-flex items-center gap-2 px-10 py-5 font-bold rounded-lg text-xl shadow-xl hover:opacity-90 transition-all hover:scale-105"
+                style={{ 
+                  backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? affiliateConfig.primaryColor 
+                    : affiliateConfig.secondaryColor,
+                  color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
+                    ? "#FFFFFF" 
+                    : affiliateConfig.primaryColor
+                }}
               >
                 Jetzt Leistungen entdecken
                 <ArrowRight className="w-6 h-6" />
