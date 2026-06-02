@@ -593,6 +593,25 @@ export function PublicLanding() {
           </div>
         </section>
 
+        {/* Trust Elements Section */}
+        <section className="bg-white border-y border-gray-200">
+          <div className="px-6 sm:px-10 lg:px-12 py-10 md:py-12">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
+                    <benefit.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{benefit.title}</h3>
+                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">{benefit.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="bg-primary">
           <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
