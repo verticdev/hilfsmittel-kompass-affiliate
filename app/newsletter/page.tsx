@@ -2,7 +2,7 @@
 
 import { useAffiliateConfig } from "@/lib/affiliate/context"
 import Image from "next/image"
-import { CheckCircle2, ArrowRight, Phone, Mail, Calendar } from "lucide-react"
+import { Phone, Mail, MapPin } from "lucide-react"
 
 export default function NewsletterPage() {
   const { config: affiliateConfig } = useAffiliateConfig()
@@ -10,7 +10,7 @@ export default function NewsletterPage() {
   return (
     <div className="min-h-screen bg-gray-200 py-8 px-4">
       {/* Email client mock frame */}
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         {/* Email header bar */}
         <div className="bg-gray-100 rounded-t-lg border border-gray-300 border-b-0 px-4 py-3">
           <div className="flex items-center gap-2 mb-3">
@@ -21,198 +21,198 @@ export default function NewsletterPage() {
           <div className="space-y-1 text-sm text-gray-600">
             <div className="flex gap-2">
               <span className="font-medium w-16">Von:</span>
-              <span>{affiliateConfig.partnerName} Newsletter &lt;newsletter@{affiliateConfig.partnerId.toLowerCase()}.de&gt;</span>
+              <span>{affiliateConfig.partnerName} &lt;info@{affiliateConfig.partnerId.toLowerCase().replace(/\s+/g, "-")}.de&gt;</span>
             </div>
             <div className="flex gap-2">
               <span className="font-medium w-16">An:</span>
-              <span>kunde@beispiel.de</span>
+              <span>max.mustermann@beispiel.de</span>
             </div>
             <div className="flex gap-2">
               <span className="font-medium w-16">Betreff:</span>
-              <span className="font-semibold text-gray-900">Exklusiv für Sie: Kostenlose Pflegehilfsmittel im Wert von bis zu 42€/Monat</span>
+              <span className="font-semibold text-gray-900">Ihre exklusiven Vorteile für Senioren und pflegende Angehörige</span>
             </div>
           </div>
         </div>
 
         {/* Email content */}
         <div className="bg-white border border-gray-300 rounded-b-lg shadow-lg overflow-hidden">
-          {/* Newsletter Header */}
-          <div 
-            className="px-8 py-6"
-            style={{ backgroundColor: affiliateConfig.primaryColor }}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                {affiliateConfig.logo && (
-                  <div className="bg-white rounded-lg p-2">
-                    <Image
-                      src={affiliateConfig.logo}
-                      alt={affiliateConfig.partnerName}
-                      width={100}
-                      height={40}
-                      className="h-8 w-auto object-contain"
-                    />
-                  </div>
-                )}
-                <span className="text-white/80 text-sm font-medium">Newsletter</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/80 text-sm">
-                <Calendar className="w-4 h-4" />
-                <span>{new Date().toLocaleDateString("de-DE", { month: "long", year: "numeric" })}</span>
-              </div>
-            </div>
+          {/* Webversion link */}
+          <div className="text-center py-3 text-sm text-gray-500 border-b border-gray-100">
+            Wenn diese E-Mail nicht korrekt angezeigt wird, klicken Sie bitte{" "}
+            <a href="#" style={{ color: affiliateConfig.primaryColor }}>hier</a>.
+          </div>
+
+          {/* Newsletter Header - Company name and logo */}
+          <div className="px-8 py-6 flex items-center justify-between">
+            <span 
+              className="text-xl font-semibold"
+              style={{ color: affiliateConfig.primaryColor }}
+            >
+              {affiliateConfig.partnerName}
+            </span>
+            {affiliateConfig.logo && (
+              <Image
+                src={affiliateConfig.logo}
+                alt={affiliateConfig.partnerName}
+                width={60}
+                height={60}
+                className="h-12 w-auto object-contain"
+              />
+            )}
+          </div>
+
+          {/* Headline */}
+          <div className="px-8 pb-4">
+            <h1 
+              className="text-xl font-medium"
+              style={{ color: affiliateConfig.primaryColor }}
+            >
+              Entlastung und Unterstützung im Pflegealltag
+            </h1>
+          </div>
+
+          {/* Hero Image */}
+          <div className="px-8 pb-6">
+            <Image
+              src="/images/hero-consultation.png"
+              alt="Beratung für Senioren"
+              width={600}
+              height={300}
+              className="w-full h-auto rounded-lg object-cover"
+            />
           </div>
 
           {/* Main Content */}
-          <div className="px-8 py-10">
+          <div className="px-8 pb-8">
             {/* Greeting */}
-            <p className="text-gray-700 text-lg mb-6">
-              Liebe Kundin, lieber Kunde,
-            </p>
-
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              als treuer {affiliateConfig.partnerName}-Kunde möchten wir Sie auf ein besonderes Angebot aufmerksam machen, 
-              das Ihnen oder Ihren Angehörigen im Pflegealltag helfen kann.
-            </p>
-
-            {/* Feature Box */}
-            <div 
-              className="rounded-xl p-6 mb-8 border-2"
-              style={{ 
-                backgroundColor: `${affiliateConfig.primaryColor}08`,
-                borderColor: `${affiliateConfig.primaryColor}20`
-              }}
+            <h2 
+              className="text-2xl font-normal mb-4"
+              style={{ color: affiliateConfig.primaryColor }}
             >
-              <div className="flex items-start gap-4">
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: affiliateConfig.secondaryColor }}
-                >
-                  <CheckCircle2 className="w-6 h-6" style={{ color: affiliateConfig.primaryColor }} />
-                </div>
-                <div>
-                  <h2 
-                    className="text-xl font-bold mb-2"
-                    style={{ color: affiliateConfig.primaryColor }}
-                  >
-                    Kostenlose Pflegehilfsmittel für Pflegebedürftige
-                  </h2>
-                  <p className="text-gray-600">
-                    Wussten Sie schon? Mit einem anerkannten Pflegegrad haben Sie Anspruch auf 
-                    <strong> bis zu 42€ monatlich</strong> für Pflegehilfsmittel zum Verbrauch – 
-                    komplett von der Pflegekasse übernommen!
-                  </p>
-                </div>
-              </div>
-            </div>
+              Guten Tag Herr/Frau Mustermann,
+            </h2>
 
-            {/* Benefits List */}
-            <h3 className="font-semibold text-gray-900 mb-4">Diese Produkte stehen Ihnen zu:</h3>
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              {[
-                "Einmalhandschuhe",
-                "Desinfektionsmittel",
-                "Bettschutzeinlagen",
-                "Mundschutz",
-                "Schutzschürzen",
-                "Händedesinfektion"
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <CheckCircle2 
-                    className="w-5 h-5 flex-shrink-0" 
-                    style={{ color: affiliateConfig.primaryColor }} 
-                  />
-                  <span className="text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              kennen Sie schon den{" "}
+              <a href="#" style={{ color: affiliateConfig.primaryColor }} className="font-medium">
+                Hilfsmittel-Kompass in Kooperation mit Senioren Focus
+              </a>
+              ? Hier finden Sie umfassende Informationen und Unterstützung rund um das Thema Pflege 
+              und Hilfsmittel für Senioren. Wir helfen Ihnen dabei, Ihre Ansprüche zu kennen und 
+              die richtigen Leistungen zu erhalten.
+            </p>
 
-            {/* Partner Introduction */}
-            <div className="bg-gray-50 rounded-lg p-6 mb-8">
-              <p className="text-gray-600 mb-4">
-                Gemeinsam mit unserem Partner <strong style={{ color: affiliateConfig.primaryColor }}>Hilfsmittel-Kompass</strong> bieten 
-                wir Ihnen einen einfachen Weg, Ihre Ansprüche geltend zu machen. Der Service ist:
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-full border border-gray-200">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <span className="text-sm font-medium">100% kostenlos</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-full border border-gray-200">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <span className="text-sm font-medium">Unverbindlich</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-full border border-gray-200">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <span className="text-sm font-medium">Direkte Lieferung</span>
-                </div>
-              </div>
-            </div>
+            {/* Partner benefits section */}
+            <p className="text-gray-900 font-semibold mb-4">
+              Ihre Vorteile im Überblick:
+            </p>
+
+            <ul className="space-y-4 mb-6 text-gray-700">
+              <li className="leading-relaxed">
+                <strong>Pflegehilfsmittel zum Verbrauch:</strong> Mit einem anerkannten Pflegegrad 
+                erhalten Sie monatlich Pflegehilfsmittel im Wert von bis zu 42€ – vollständig von 
+                der Pflegekasse übernommen. Dazu gehören Einmalhandschuhe, Desinfektionsmittel, 
+                Bettschutzeinlagen und mehr.
+              </li>
+              <li className="leading-relaxed">
+                <strong>Hausnotruf-Systeme:</strong> Sicherheit rund um die Uhr mit modernen 
+                Notrufsystemen für Zuhause. Bei Pflegegrad werden die Kosten von der Pflegekasse 
+                bezuschusst – für mehr Unabhängigkeit im Alltag.
+              </li>
+              <li className="leading-relaxed">
+                <strong>Alltagshilfen und Mobilitätslösungen:</strong> Von Treppenliften über 
+                barrierefreie Badumbauten bis hin zu praktischen Alltagshelfern – wir vermitteln 
+                Sie an qualifizierte regionale Fachberater.
+              </li>
+              <li className="leading-relaxed">
+                <strong>Kostenlose Beratung:</strong> Unsere Experten beraten Sie unverbindlich 
+                zu allen Fragen rund um Pflegeleistungen und unterstützen Sie bei der Antragstellung.
+              </li>
+            </ul>
+
+            <p className="text-gray-700 mb-6">
+              Nutzen Sie jetzt Ihre Vorteile – schnell, einfach und 100% kostenlos!
+            </p>
 
             {/* CTA Button */}
-            <div className="text-center mb-8">
+            <div className="mb-8">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white font-semibold text-lg transition-transform hover:scale-105"
+                className="inline-block px-6 py-3 text-white font-medium rounded"
                 style={{ backgroundColor: affiliateConfig.primaryColor }}
               >
-                Jetzt kostenlos anfragen
-                <ArrowRight className="w-5 h-5" />
+                Zum Hilfsmittel-Kompass
               </a>
-              <p className="text-sm text-gray-500 mt-3">
-                In nur 2 Minuten zum unverbindlichen Angebot
-              </p>
-            </div>
-
-            {/* Testimonial */}
-            <div 
-              className="border-l-4 pl-4 py-2 mb-8"
-              style={{ borderColor: affiliateConfig.secondaryColor }}
-            >
-              <p className="text-gray-600 italic mb-2">
-                &quot;Ich hätte nicht gedacht, dass es so einfach ist. Die Hilfsmittel werden direkt zu mir nach Hause 
-                geliefert und ich muss mich um nichts kümmern.&quot;
-              </p>
-              <p className="text-sm text-gray-500">– Maria K., 72, aus Hamburg</p>
             </div>
 
             {/* Closing */}
-            <p className="text-gray-600 mb-6">
-              Haben Sie Fragen? Unser Serviceteam hilft Ihnen gerne weiter.
+            <p className="text-gray-700 mb-4">
+              Mit freundlichen Grüßen
+            </p>
+            <p className="text-gray-700 font-medium mb-6">
+              Ihr {affiliateConfig.partnerName}
             </p>
 
-            <p className="text-gray-700">
-              Herzliche Grüße,<br />
-              <strong>Ihr {affiliateConfig.partnerName}-Team</strong>
-            </p>
+            {/* Tip section */}
+            <div className="border-t border-gray-200 pt-6">
+              <p className="text-gray-900 font-semibold mb-2">Unser Tipp:</p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Haben Sie oder ein Angehöriger bereits einen Pflegegrad? Dann stehen Ihnen 
+                zahlreiche Leistungen zu, die oft nicht bekannt sind. Lassen Sie sich kostenlos 
+                beraten und erfahren Sie, welche Unterstützung Ihnen zusteht.
+              </p>
+            </div>
           </div>
 
-          {/* Footer */}
-          <div 
-            className="px-8 py-6 border-t border-gray-200"
-            style={{ backgroundColor: `${affiliateConfig.primaryColor}05` }}
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-              <div className="flex items-center gap-4">
-                {affiliateConfig.contactPhone && (
-                  <span className="flex items-center gap-1">
-                    <Phone className="w-4 h-4" />
-                    {affiliateConfig.contactPhone}
-                  </span>
-                )}
-                {affiliateConfig.contactEmail && (
-                  <span className="flex items-center gap-1">
-                    <Mail className="w-4 h-4" />
-                    {affiliateConfig.contactEmail}
-                  </span>
-                )}
+          {/* Footer Icons */}
+          <div className="px-8 py-6 border-t border-gray-200">
+            <div className="grid grid-cols-3 gap-4 text-center mb-6">
+              <div>
+                <Phone className="w-6 h-6 mx-auto mb-2 text-gray-400" />
+                <p className="text-sm text-gray-600">Sie haben Fragen?</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {affiliateConfig.contactPhone || "0800 123 456"}
+                </p>
               </div>
-              <div className="flex gap-4">
-                <a href="#" className="hover:underline">Impressum</a>
-                <a href="#" className="hover:underline">Datenschutz</a>
-                <a href="#" className="hover:underline">Abmelden</a>
+              <div>
+                <Mail className="w-6 h-6 mx-auto mb-2 text-gray-400" />
+                <p className="text-sm text-gray-600">Kontaktieren Sie uns</p>
+                <p className="text-sm font-medium text-gray-900">per E-Mail</p>
+              </div>
+              <div>
+                <MapPin className="w-6 h-6 mx-auto mb-2 text-gray-400" />
+                <p className="text-sm text-gray-600">Finden Sie einen</p>
+                <p className="text-sm font-medium text-gray-900">Berater vor Ort</p>
               </div>
             </div>
+
+            {/* Senioren Focus Partner Badge */}
+            <div className="flex justify-center mb-6">
+              <div className="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-full">
+                <Image
+                  src="/images/senioren-focus-badge.png"
+                  alt="Senioren Focus Partner"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                />
+                <span className="text-sm text-gray-600">In Kooperation mit Senioren Focus</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Legal Footer */}
+          <div className="px-8 py-4 bg-gray-50 border-t border-gray-200">
+            <p className="text-xs text-gray-500 leading-relaxed mb-2">
+              Bitte antworten Sie nicht direkt auf diese E-Mail.
+            </p>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Für Fragen oder Anregungen nutzen Sie bitte die dafür vorgesehenen Kontaktwege. 
+              Diese E-Mail wurde an max.mustermann@beispiel.de gesendet. 
+              <a href="#" className="underline ml-1">Newsletter abbestellen</a> | 
+              <a href="#" className="underline ml-1">Datenschutz</a> | 
+              <a href="#" className="underline ml-1">Impressum</a>
+            </p>
           </div>
         </div>
 
