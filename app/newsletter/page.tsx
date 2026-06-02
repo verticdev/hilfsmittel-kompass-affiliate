@@ -29,7 +29,7 @@ export default function NewsletterPage() {
             </div>
             <div className="flex gap-2">
               <span className="font-medium w-16">Betreff:</span>
-              <span className="font-semibold text-gray-900">Exklusiv: Bis zu 504€ jährlich für Pflegehilfsmittel sichern</span>
+              <span className="font-semibold text-gray-900">Exklusiv: Ihre Vorteile für Pflege, Sicherheit & Alltag</span>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function NewsletterPage() {
             style={{ backgroundColor: affiliateConfig.primaryColor }}
           >
             <h1 className="text-xl md:text-2xl font-bold text-white text-center">
-              Wussten Sie schon? Sie haben Anspruch auf kostenlose Pflegehilfsmittel!
+              Entlastung & Unterstützung im Pflegealltag - kostenlos!
             </h1>
           </div>
 
@@ -85,22 +85,7 @@ export default function NewsletterPage() {
               className="absolute bottom-4 left-4 px-4 py-2 rounded-lg text-white font-bold text-lg"
               style={{ backgroundColor: affiliateConfig.primaryColor }}
             >
-              100% KOSTENLOS
-            </div>
-          </div>
-
-          {/* Value Proposition Box */}
-          <div className="mx-8 -mt-4 relative z-10">
-            <div 
-              className="rounded-lg p-6 text-white text-center"
-              style={{ backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" ? affiliateConfig.primaryColor : affiliateConfig.secondaryColor }}
-            >
-              <p className="text-3xl font-bold mb-1" style={{ color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" ? "#FFFFFF" : affiliateConfig.primaryColor }}>
-                Bis zu 42€ monatlich
-              </p>
-              <p className="text-sm opacity-90" style={{ color: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" ? "#FFFFFF" : affiliateConfig.primaryColor }}>
-                = 504€ pro Jahr, die Ihnen zustehen!
-              </p>
+              KOSTENLOSE BERATUNG
             </div>
           </div>
 
@@ -115,10 +100,10 @@ export default function NewsletterPage() {
             </h2>
 
             <p className="text-gray-700 mb-4 leading-relaxed text-lg">
-              <strong>Viele Pflegebedürftige und ihre Angehörigen wissen nicht</strong>, dass sie 
-              Anspruch auf <strong>kostenlose Pflegehilfsmittel</strong> haben. Gemeinsam mit unserem 
-              Partner <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> möchten 
-              wir das ändern!
+              kennen Sie schon den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hilfsmittel-Kompass</span> in 
+              Kooperation mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span>? 
+              Wir helfen Ihnen, <strong>alle Leistungen zu erhalten, die Ihnen zustehen</strong> - von Pflegehilfsmitteln 
+              bis zum Hausnotruf!
             </p>
 
             {/* First CTA */}
@@ -128,7 +113,7 @@ export default function NewsletterPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: affiliateConfig.primaryColor }}
               >
-                Jetzt Anspruch prüfen
+                Jetzt kostenlos beraten lassen
                 <ArrowRight className="w-5 h-5" />
               </a>
               <p className="text-sm text-gray-500 mt-2">Unverbindlich & in nur 2 Minuten</p>
@@ -137,7 +122,7 @@ export default function NewsletterPage() {
             {/* Benefits with Icons */}
             <div className="bg-gray-50 rounded-xl p-6 my-8">
               <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
-                Das erwartet Sie beim Hilfsmittel-Kompass:
+                Unsere Leistungen im Überblick:
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -149,8 +134,8 @@ export default function NewsletterPage() {
                     <Gift className="w-5 h-5" style={{ color: affiliateConfig.primaryColor }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Pflegehilfsmittel-Box</p>
-                    <p className="text-sm text-gray-600">Monatlich gratis zu Ihnen nach Hause</p>
+                    <p className="font-semibold text-gray-900">Pflegehilfsmittel</p>
+                    <p className="text-sm text-gray-600">Bis zu 42€/Monat - von der Kasse bezahlt</p>
                   </div>
                 </div>
                 
@@ -162,8 +147,8 @@ export default function NewsletterPage() {
                     <Shield className="w-5 h-5" style={{ color: affiliateConfig.primaryColor }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Hausnotruf-System</p>
-                    <p className="text-sm text-gray-600">Sicherheit rund um die Uhr</p>
+                    <p className="font-semibold text-gray-900">Hausnotruf</p>
+                    <p className="text-sm text-gray-600">24/7 Sicherheit auf Knopfdruck</p>
                   </div>
                 </div>
                 
@@ -175,8 +160,8 @@ export default function NewsletterPage() {
                     <CheckCircle className="w-5 h-5" style={{ color: affiliateConfig.primaryColor }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Alltagshilfen</p>
-                    <p className="text-sm text-gray-600">Treppenlift, Badumbau & mehr</p>
+                    <p className="font-semibold text-gray-900">Treppenlift & Badumbau</p>
+                    <p className="text-sm text-gray-600">Bis zu 4.000€ Zuschuss möglich</p>
                   </div>
                 </div>
                 
@@ -188,8 +173,8 @@ export default function NewsletterPage() {
                     <Clock className="w-5 h-5" style={{ color: affiliateConfig.primaryColor }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Schnelle Bearbeitung</p>
-                    <p className="text-sm text-gray-600">Wir kümmern uns um alles</p>
+                    <p className="font-semibold text-gray-900">Alltagshilfen</p>
+                    <p className="text-sm text-gray-600">Individuelle Unterstützung im Alltag</p>
                   </div>
                 </div>
               </div>
@@ -204,11 +189,11 @@ export default function NewsletterPage() {
               }}
             >
               <p className="font-bold text-gray-900 mb-2">
-                Wichtig: Viele Menschen verschenken bares Geld!
+                Wussten Sie schon?
               </p>
               <p className="text-gray-700">
-                Über <strong>80% der Anspruchsberechtigten</strong> nutzen ihre Pflegeleistungen nicht. 
-                Prüfen Sie jetzt kostenlos, ob auch Sie Anspruch haben – es dauert nur 2 Minuten!
+                Viele Pflegeleistungen werden <strong>nicht beantragt</strong>, obwohl ein Anspruch besteht. 
+                Lassen Sie sich jetzt kostenlos von unseren Experten beraten!
               </p>
             </div>
 
@@ -219,7 +204,7 @@ export default function NewsletterPage() {
                 className="inline-flex items-center gap-2 px-10 py-5 text-white font-bold rounded-lg text-xl shadow-xl hover:opacity-90 transition-all hover:scale-105"
                 style={{ backgroundColor: affiliateConfig.primaryColor }}
               >
-                Kostenlos Anspruch prüfen
+                Jetzt Leistungen entdecken
                 <ArrowRight className="w-6 h-6" />
               </a>
             </div>
