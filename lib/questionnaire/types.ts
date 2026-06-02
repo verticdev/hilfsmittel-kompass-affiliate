@@ -15,9 +15,9 @@ export interface ProductOption {
   productName: string
   description: string
   features: string[]
-  price: string
+  price?: string
   priceUnit?: string
-  priceNote: string
+  priceNote?: string
 }
 
 export interface QuestionConfig {
@@ -61,7 +61,7 @@ export interface StepValidation {
 export interface QuestionnaireStep {
   id: string
   title: string
-  description: string
+  description?: string
   questions: QuestionConfig[]
   validation?: StepValidation
 }
