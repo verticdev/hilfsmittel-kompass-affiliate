@@ -373,9 +373,6 @@ export function PublicLanding() {
                 <Link href="#services" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   Alle Services
                 </Link>
-                <Link href="#so-gehts" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
-                  So funktioniert&apos;s
-                </Link>
                 <Link href="#faq" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
                   FAQ
                 </Link>
@@ -541,48 +538,6 @@ export function PublicLanding() {
                   service={service}
                   onClick={() => trackServiceCardClick(service.id, service.title)}
                 />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How it Works Section */}
-        <section id="so-gehts" className="bg-white scroll-mt-16">
-          <div className="px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                So einfach geht&apos;s
-              </h2>
-              <p className="mt-2 text-gray-600">
-                In 3 Schritten zu Ihrer Pflegeleistung
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {[
-                {
-                  step: "1",
-                  title: "Leistung auswählen",
-                  description: "Wählen Sie die gewünschte Pflegeleistung aus unserem Angebot",
-                },
-                {
-                  step: "2",
-                  title: "Kurze Fragen beantworten",
-                  description: "Beantworten Sie wenige Fragen zu Ihrer Situation - dauert nur 2 Minuten",
-                },
-                {
-                  step: "3",
-                  title: "Beratung erhalten",
-                  description: "Ein regionaler Experte meldet sich bei Ihnen für eine persönliche Beratung",
-                },
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary text-white font-bold text-xl flex items-center justify-center mx-auto">
-                    {item.step}
-                  </div>
-                  <h3 className="mt-4 font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.description}</p>
-                </div>
               ))}
             </div>
           </div>
