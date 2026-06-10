@@ -1,6 +1,7 @@
 "use client"
 
 import { useAffiliateConfig } from "@/lib/affiliate/context"
+import { buildUrlWithTracking } from "@/lib/tracking-params"
 import Image from "next/image"
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight, Gift, Shield, Clock } from "lucide-react"
 
@@ -143,7 +144,7 @@ export default function NewsletterPage() {
             {/* First CTA with Secondary Color accent */}
             <div className="text-center my-6">
               <a
-                href="#"
+                href={buildUrlWithTracking("/start")}
                 className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
                 style={{ 
                   backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
