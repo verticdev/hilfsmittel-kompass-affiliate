@@ -1,6 +1,7 @@
 "use client"
 
 import { useAffiliateConfig } from "@/lib/affiliate/context"
+import { buildUrlWithTracking } from "@/lib/tracking-params"
 import Image from "next/image"
 import { Phone, Mail, MapPin, CheckCircle, ArrowRight, Shield, Clock, Bell } from "lucide-react"
 
@@ -69,7 +70,6 @@ export default function NewsletterHausnotrufPage() {
               width={700}
               height={350}
               className="w-full h-auto object-cover"
-              style={{ paddingTop: "10px" }}
             />
             {/* Overlay Badge with Primary/Secondary swap */}
             <div 
@@ -130,7 +130,7 @@ export default function NewsletterHausnotrufPage() {
 
             <p className="text-gray-700 mb-4 leading-relaxed text-lg">
               als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf ein 
-              besonderes Angebot aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
+              besonderes Angebot aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Medivato</span> bieten 
               wir Ihnen den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hausnotruf</span> – 
               für mehr Sicherheit und Selbstständigkeit in den eigenen vier Wänden!
             </p>
@@ -144,7 +144,7 @@ export default function NewsletterHausnotrufPage() {
             {/* First CTA with Secondary Color accent */}
             <div className="text-center my-6">
               <a
-                href="#"
+                href={buildUrlWithTracking("/hausnotruf")}
                 className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded-lg text-lg shadow-lg hover:opacity-90 transition-opacity"
                 style={{ 
                   backgroundColor: affiliateConfig.secondaryColor === "#FFFFFF" || affiliateConfig.secondaryColor === "#ffffff" 
