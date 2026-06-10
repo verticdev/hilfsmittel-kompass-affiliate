@@ -69,7 +69,6 @@ export default function NewsletterHausnotrufPage() {
               width={700}
               height={350}
               className="w-full h-auto object-cover"
-              style={{ paddingTop: "10px" }}
             />
             {/* Overlay Badge with Primary/Secondary swap */}
             <div 
@@ -130,7 +129,7 @@ export default function NewsletterHausnotrufPage() {
 
             <p className="text-gray-700 mb-4 leading-relaxed text-lg">
               als geschätzter <strong>{affiliateConfig.partnerName}-Kunde</strong> möchten wir Sie auf ein 
-              besonderes Angebot aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Senioren Focus</span> bieten 
+              besonderes Angebot aufmerksam machen: Gemeinsam mit <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Medivato</span> bieten 
               wir Ihnen den <span style={{ color: affiliateConfig.primaryColor }} className="font-semibold">Hausnotruf</span> – 
               für mehr Sicherheit und Selbstständigkeit in den eigenen vier Wänden!
             </p>
