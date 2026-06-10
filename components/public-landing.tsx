@@ -278,14 +278,23 @@ function SupportCarousel() {
           {/* Slide Content - edge-to-edge on mobile */}
           <div className="bg-white rounded-xl overflow-hidden mx-0 md:mx-10">
             <div className="flex flex-col md:flex-row">
-              {/* Image */}
+              {/* Image - all slides stacked and crossfaded for smooth, preloaded transitions */}
               <div className="md:w-1/2">
                 <div className="aspect-[4/3] md:aspect-auto md:h-full relative">
-                  <img
-                    src={currentSlide.image}
-                    alt={currentSlide.label}
-                    className="w-full h-full object-cover"
-                  />
+                  {carouselSlides.map((slide, index) => (
+                    <img
+                      key={slide.id}
+                      src={slide.image || "/placeholder.svg"}
+                      alt={slide.label}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      aria-hidden={index !== activeIndex}
+                      className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+                        index === activeIndex
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      } ${index === 0 ? "relative" : "absolute inset-0"}`}
+                    />
+                  ))}
                 </div>
               </div>
 
