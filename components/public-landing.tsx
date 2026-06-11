@@ -35,6 +35,7 @@ const services = [
     href: "/hausnotruf",
     image: "/images/hausnotruf-card.png",
     category: "Sicherheit",
+    imageContain: true,
   },
   {
     id: "pflegebox",
@@ -154,7 +155,11 @@ function ServiceCard({ service, onClick }: { service: typeof services[0]; onClic
         <img
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className={`w-full h-full group-hover:scale-105 transition-transform duration-300 ${
+            "imageContain" in service && service.imageContain
+              ? "object-contain p-4"
+              : "object-cover"
+          }`}
         />
         <div className="absolute top-2 left-2">
           <span className="text-[10px] font-medium bg-white/90 backdrop-blur-sm text-gray-600 px-2 py-0.5 rounded-full">
