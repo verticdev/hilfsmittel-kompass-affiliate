@@ -33,7 +33,7 @@ const services = [
     title: "Hausnotruf",
     description: "25,50€ mtl. Zuschuss",
     href: "/hausnotruf",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hausnotruf-hires-T0JSt0tu2DNdXbFRMLp8QCeaKY7qbc.png",
+    image: "/images/hausnotruf-card.png",
     category: "Sicherheit",
   },
   {
