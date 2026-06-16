@@ -83,7 +83,7 @@ const services = [
   {
     id: "elektrorollstuhl",
     title: "Elektrorollstuhl",
-    description: "Ab 0€ mit Krankenkasse",
+    description: "Bis zu 100% Kostenübernahme",
     href: "/elektrorollstuhl",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rollstuhl-hires-s5NDxTYfMYlzGt1UMw5UEw6f8hBR9g.png",
     category: "Mobilität",
