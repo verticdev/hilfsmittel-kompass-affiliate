@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Smartphone, Menu } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Menu } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
@@ -140,10 +140,10 @@ const carouselSlides = [
     href: "/badumbau",
   },
   {
-    id: "hausnotruf",
-    label: "Hausnotruf",
-    icon: Smartphone,
-    image: "/images/carousel-hausnotruf.png",
+      id: "hausnotruf",
+      label: "Hausnotruf",
+      icon: Phone,
+      image: "/images/carousel-hausnotruf.png",
     headline: "Hausnotruf kostenlos ab Pflegegrad 1",
     description: "Schnelle Hilfe auf Knopfdruck – rund um die Uhr. Bleiben Sie zuhause sicher und geben Sie sich und Ihrer Familie ein gutes Gefühl.",
     cta: "Kostenlosen Hausnotruf prüfen",
