@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Menu } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, ShoppingBag, Menu } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
@@ -122,7 +122,7 @@ const carouselSlides = [
   {
     id: "alltagshilfe",
     label: "Alltagshilfe",
-    icon: Home,
+    icon: ShoppingBag,
     image: "/images/carousel-alltagshilfe.png",
     headline: "Bis zu 131 € monatlich für Unterstützung im Alltag",
     description: "Ob Einkaufen, Putzen oder Begleitung – wir finden passende Unterstützung für Sie. Bleiben Sie selbstständig und entlasten Ihre Angehörigen.",
