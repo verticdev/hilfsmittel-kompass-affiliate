@@ -2,13 +2,33 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, Smartphone, Menu } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Star, Bath, ShoppingBag, Menu } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
 import { GermanyMap } from "@/components/germany-map"
+
+// Custom Treppenlift (stairlift) icon, matches lucide-react icon interface
+function TreppenliftIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M2 22h5v-5h5v-5h5v-5h5" />
+      <path d="M3 9l6-6m0 0h-5m5 0v5" />
+    </svg>
+  )
+}
 
 // All services with their details
 const services = [
@@ -63,7 +83,7 @@ const services = [
   {
     id: "elektrorollstuhl",
     title: "Elektrorollstuhl",
-    description: "Ab 0€ mit Krankenkasse",
+    description: "Bis zu 100% Kostenübernahme",
     href: "/elektrorollstuhl",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rollstuhl-hires-s5NDxTYfMYlzGt1UMw5UEw6f8hBR9g.png",
     category: "Mobilität",
@@ -102,7 +122,7 @@ const carouselSlides = [
   {
     id: "alltagshilfe",
     label: "Alltagshilfe",
-    icon: Home,
+    icon: ShoppingBag,
     image: "/images/carousel-alltagshilfe.png",
     headline: "Bis zu 131 € monatlich für Unterstützung im Alltag",
     description: "Ob Einkaufen, Putzen oder Begleitung – wir finden passende Unterstützung für Sie. Bleiben Sie selbstständig und entlasten Ihre Angehörigen.",
@@ -120,20 +140,20 @@ const carouselSlides = [
     href: "/badumbau",
   },
   {
-    id: "hausnotruf",
-    label: "Hausnotruf",
-    icon: Smartphone,
-    image: "/images/carousel-hausnotruf.png",
+      id: "hausnotruf",
+      label: "Hausnotruf",
+      icon: Phone,
+      image: "/images/carousel-hausnotruf.png",
     headline: "Hausnotruf kostenlos ab Pflegegrad 1",
     description: "Schnelle Hilfe auf Knopfdruck – rund um die Uhr. Bleiben Sie zuhause sicher und geben Sie sich und Ihrer Familie ein gutes Gefühl.",
     cta: "Kostenlosen Hausnotruf prüfen",
     href: "/hausnotruf",
   },
   {
-    id: "treppenlift",
-    label: "Treppenlift",
-    icon: Award,
-    image: "/images/carousel-treppenlift.png",
+      id: "treppenlift",
+      label: "Treppenlift",
+      icon: TreppenliftIcon,
+      image: "/images/carousel-treppenlift.png",
     headline: "Bis zu 4.180 € Zuschuss für Ihren Treppenlift",
     description: "Bleiben Sie in den eigenen vier Wänden mobil und sicher. Wir helfen bei Zuschüssen und vergleichen Angebote seriöser Anbieter.",
     cta: "Treppenlift-Zuschuss prüfen",

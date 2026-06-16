@@ -13,11 +13,11 @@ export interface AffiliateConfig {
 }
 
 const defaultConfig: AffiliateConfig = {
-  partnerId: "edeka",
-  partnerName: "EDEKA",
-  logo: "/images/edeka-logo.png",
-  primaryColor: "#0F4386",
-  secondaryColor: "#FDDC3F",
+  partnerId: "norma",
+  partnerName: "NORMA",
+  logo: "/images/norma-logo.png",
+  primaryColor: "#CC1F20",
+  secondaryColor: "#FDC548",
 }
 
 const STORAGE_KEY = "affiliate-config"

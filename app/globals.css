@@ -107,33 +107,33 @@ html {
   --card-foreground: #1a1a1a;
   --popover: oklch(1 0 0);
   --popover-foreground: #1a1a1a;
-  --primary: #0F4386;
+  --primary: #CC1F20;
   --primary-foreground: #ffffff;
-  --secondary: #FDDC3F;
-  --secondary-foreground: #0F4386;
+  --secondary: #FDC548;
+  --secondary-foreground: #CC1F20;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #FFF8DC;
-  --accent-foreground: #0F4386;
+  --accent: #FEF3D9;
+  --accent-foreground: #CC1F20;
   --destructive: #dc2626;
   --destructive-foreground: oklch(1 0 0);
   --border: #e2e8f0;
   --input: #d1d5db;
-  --ring: #0F4386;
-  --chart-1: #0F4386;
-  --chart-2: #3b6ba8;
-  --chart-3: #6793ca;
-  --chart-4: #93bbec;
-  --chart-5: #FDDC3F;
+  --ring: #CC1F20;
+  --chart-1: #CC1F20;
+  --chart-2: #d94a4b;
+  --chart-3: #e57576;
+  --chart-4: #f0a0a1;
+  --chart-5: #FDC548;
   --radius: 0.5rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #0F4386;
+  --sidebar-primary: #CC1F20;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #FFF8DC;
-  --sidebar-accent-foreground: #0F4386;
+  --sidebar-accent: #FEF3D9;
+  --sidebar-accent-foreground: #CC1F20;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #0F4386;
+  --sidebar-ring: #CC1F20;
 
   --success: #16a34a;
   --success-foreground: #ffffff;
@@ -145,10 +145,10 @@ html {
   --warning-muted: #fef9c3;
   --warning-muted-foreground: #a16207;
 
-  --info: #0F4386;
+  --info: #CC1F20;
   --info-foreground: #ffffff;
-  --info-muted: #dbeafe;
-  --info-muted-foreground: #0F4386;
+  --info-muted: #fde8e8;
+  --info-muted-foreground: #CC1F20;
 
   --error: #dc2626;
   --error-foreground: #ffffff;
@@ -167,11 +167,11 @@ html {
   --shadow-opacity: 0.05;
   --shadow-color: #000000;
 
-  /* EDEKA brand colors */
-  --affiliate-primary: #0F4386;
-  --affiliate-primary-hover: #0a3266;
-  --affiliate-secondary: #FDDC3F;
-  --affiliate-secondary-light: #FFF8DC;
+  /* NORMA brand colors */
+  --affiliate-primary: #CC1F20;
+  --affiliate-primary-hover: #a91819;
+  --affiliate-secondary: #FDC548;
+  --affiliate-secondary-light: #FEF3D9;
 }
 
 .dark {
