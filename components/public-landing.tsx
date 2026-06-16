@@ -713,7 +713,7 @@ export function PublicLanding() {
                     <span className="pr-4">{faq.question}</span>
                     <ChevronRight className="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-90" />
                   </summary>
-                  <div className="px-5 pb-4 pt-0 text-sm text-gray-600 leading-relaxed">
+                  <div className="px-5 pb-4 pt-4 text-sm text-gray-600 leading-relaxed">
                     {faq.answer}
                   </div>
                 </details>
