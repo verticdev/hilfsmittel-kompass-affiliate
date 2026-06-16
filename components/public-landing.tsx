@@ -10,6 +10,26 @@ import { saveTrackingParams, buildUrlWithTracking } from "@/lib/tracking-params"
 import { trackLandingPageView, trackServiceCardClick } from "@/lib/analytics"
 import { GermanyMap } from "@/components/germany-map"
 
+// Custom Treppenlift (stairlift) icon, matches lucide-react icon interface
+function TreppenliftIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M2 22h5v-5h5v-5h5v-5h5" />
+      <path d="M3 9l6-6m0 0h-5m5 0v5" />
+    </svg>
+  )
+}
+
 // All services with their details
 const services = [
   {
@@ -130,10 +150,10 @@ const carouselSlides = [
     href: "/hausnotruf",
   },
   {
-    id: "treppenlift",
-    label: "Treppenlift",
-    icon: Award,
-    image: "/images/carousel-treppenlift.png",
+      id: "treppenlift",
+      label: "Treppenlift",
+      icon: TreppenliftIcon,
+      image: "/images/carousel-treppenlift.png",
     headline: "Bis zu 4.180 € Zuschuss für Ihren Treppenlift",
     description: "Bleiben Sie in den eigenen vier Wänden mobil und sicher. Wir helfen bei Zuschüssen und vergleichen Angebote seriöser Anbieter.",
     cta: "Treppenlift-Zuschuss prüfen",
