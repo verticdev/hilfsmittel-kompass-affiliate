@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Bath, ShoppingBag, Menu } from "lucide-react"
+import { ChevronRight, ChevronLeft, Shield, Home, Phone, CheckCircle2, Users, Clock, Award, MapPin, Bath, ShoppingBag, Handshake, Menu } from "lucide-react"
 import { useAffiliate } from "@/lib/affiliate/context"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
@@ -535,7 +535,7 @@ export function PublicLanding() {
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
-                  <Users className="w-6 h-6 text-primary opacity-70" />
+                  <Handshake className="w-6 h-6 text-primary opacity-70" />
                 </div>
                 <div className="text-xl md:text-2xl font-bold text-foreground">300+</div>
                 <div className="text-sm text-muted-foreground">Regionale Partner</div>
