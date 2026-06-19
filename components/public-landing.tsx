@@ -389,8 +389,10 @@ export function PublicLanding() {
                 <Image
                   src={affiliateConfig.logo || "/placeholder.svg"}
                   alt={affiliateConfig.partnerName}
-                  width={120}
-                  height={48}
+                  width={400}
+                  height={150}
+                  quality={100}
+                  priority
                   style={{ height: 48, width: "auto" }}
                   className="object-contain"
                 />
@@ -771,8 +773,9 @@ export function PublicLanding() {
                 <Image
                   src={affiliateConfig.logo || "/placeholder.svg"}
                   alt={affiliateConfig.partnerName}
-                  width={60}
-                  height={40}
+                  width={320}
+                  height={120}
+                  quality={100}
                   style={{ height: 40, width: "auto" }}
                 />
               </div>
