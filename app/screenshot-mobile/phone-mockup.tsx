@@ -1,5 +1,7 @@
 "use client"
 
+import { SignalHigh, Wifi, BatteryFull } from "lucide-react"
+
 /**
  * Phone mockup that uses the provided iPhone SVG frame
  * (public/images/mockup-phone.svg).
@@ -8,6 +10,11 @@
  * and a built-in dynamic island. We render the live route BEHIND the SVG and
  * let it show through the screen, so the frame edges and the island naturally
  * overlap the content like a real device.
+ *
+ * On top of the live route we draw an iOS-style status bar (time on the left,
+ * signal / wifi / battery on the right) flanking the centered island, and we
+ * push the page content down so it begins BELOW the status bar — exactly how a
+ * real browser renders web content beneath the system status bar.
  *
  * The screen cut-out geometry was measured from the SVG's transparent region
  * and expressed as fractions of the full image box, so it stays correct at any
@@ -25,6 +32,9 @@ const SCREEN_HEIGHT_FRAC = 0.8039
 
 // iPhone logical viewport width the embedded site renders at
 const IFRAME_LOGICAL_WIDTH = 390
+
+// iOS status-bar height in logical (390-wide) pixels — content starts below it
+const STATUS_BAR_LOGICAL = 52
 
 export function PhoneMockup({
   src,
@@ -44,11 +54,19 @@ export function PhoneMockup({
 
   // Scale the logical iPhone-width iframe down to fit the screen cut-out
   const scale = screenWidth / IFRAME_LOGICAL_WIDTH
-  const iframeLogicalHeight = screenHeight / scale
+  const statusBarHeight = STATUS_BAR_LOGICAL * scale
+
+  // The live page occupies the screen below the status bar
+  const contentHeight = screenHeight - statusBarHeight
+  const iframeLogicalHeight = contentHeight / scale
+
+  // Status-bar typography / icon sizing scales with the phone
+  const statusFont = Math.round(screenWidth * 0.058)
+  const iconSize = Math.round(screenWidth * 0.06)
 
   return (
     <div className="relative shrink-0" style={{ width, height: phoneHeight }}>
-      {/* Live route, sitting behind the frame and clipped to the screen */}
+      {/* Screen: status bar + live route, clipped to the screen cut-out */}
       <div
         className="absolute overflow-hidden bg-white"
         style={{
@@ -59,22 +77,47 @@ export function PhoneMockup({
           borderRadius: screenWidth * 0.16,
         }}
       >
-        <iframe
-          src={src}
-          title={title}
-          loading="lazy"
-          scrolling="no"
-          className="origin-top-left border-0"
+        {/* iOS status bar (sits above the page content, flanks the island) */}
+        <div
+          className="flex items-center justify-between bg-white text-black"
           style={{
-            width: IFRAME_LOGICAL_WIDTH,
-            height: iframeLogicalHeight,
-            transform: `scale(${scale})`,
+            height: statusBarHeight,
+            paddingLeft: screenWidth * 0.09,
+            paddingRight: screenWidth * 0.08,
           }}
-        />
+        >
+          <span
+            className="font-semibold leading-none"
+            style={{ fontSize: statusFont }}
+          >
+            9:41
+          </span>
+          <span className="flex items-center" style={{ gap: screenWidth * 0.018 }}>
+            <SignalHigh style={{ width: iconSize, height: iconSize }} strokeWidth={2.5} />
+            <Wifi style={{ width: iconSize, height: iconSize }} strokeWidth={2.5} />
+            <BatteryFull style={{ width: iconSize * 1.15, height: iconSize * 1.15 }} strokeWidth={2} />
+          </span>
+        </div>
+
+        {/* Live route begins below the status bar */}
+        <div className="relative overflow-hidden" style={{ height: contentHeight }}>
+          <iframe
+            src={src}
+            title={title}
+            loading="lazy"
+            scrolling="no"
+            className="origin-top-left border-0"
+            style={{
+              width: IFRAME_LOGICAL_WIDTH,
+              height: iframeLogicalHeight,
+              transform: `scale(${scale})`,
+            }}
+          />
+        </div>
       </div>
 
       {/* iPhone frame on top — transparent screen reveals the content,
-          and the built-in dynamic island overlaps it like a real device */}
+          and the built-in dynamic island overlaps the status bar like a real device */}
       <img
         src="/images/mockup-phone.svg"
         alt={`${title} auf einem Smartphone`}
