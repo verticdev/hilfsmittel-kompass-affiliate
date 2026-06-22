@@ -16,6 +16,14 @@ export default function CrmMockupPage() {
 
   const callbackNumber = "01573 / 598 6330"
 
+  // Selected product from the questionnaire (would come from the lead in production)
+  const product = {
+    brandName: "Johanniter",
+    brandLogo: "/images/logos/johanniter-logo.png",
+    productName: "Johanniter Hausnotruf",
+    productImage: "/images/products/johanniter-hausnotruf.png",
+  }
+
   return (
     <div className="min-h-screen bg-gray-200 py-8 px-4">
       {/* Email client mock frame */}
@@ -123,26 +131,54 @@ export default function CrmMockupPage() {
 
             {/* Contact data box */}
             <div className="bg-gray-50 rounded-xl p-6 mb-6">
-              <h3 className="text-lg font-bold mb-4" style={{ color: affiliateConfig.primaryColor }}>
-                Ihre Kontaktdaten
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <User className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
-                  <span className="text-sm text-gray-500 w-20">Name:</span>
-                  <span className="text-gray-900 font-medium">{lead.name}</span>
+              <div className="flex flex-col sm:flex-row gap-6">
+                {/* Product (1/3): logo + image */}
+                <div className="sm:w-1/3 flex flex-col items-center justify-center gap-3 sm:border-r sm:border-gray-200 sm:pr-6">
+                  <div className="relative h-8 w-full">
+                    <Image
+                      src={product.brandLogo || "/placeholder.svg"}
+                      alt={product.brandName}
+                      fill
+                      className="object-contain object-center"
+                    />
+                  </div>
+                  <div className="relative h-24 w-full">
+                    <Image
+                      src={product.productImage || "/placeholder.svg"}
+                      alt={product.productName}
+                      fill
+                      className="object-contain object-center"
+                    />
+                  </div>
+                  <span className="text-xs text-gray-500 text-center leading-tight">
+                    {product.productName}
+                  </span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
-                  <span className="text-sm text-gray-500 w-20">Telefon:</span>
-                  <span className="text-gray-900 font-medium">{lead.phone}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
-                  <span className="text-sm text-gray-500 w-20">E-Mail:</span>
-                  <a href={`mailto:${lead.email}`} className="font-medium" style={{ color: affiliateConfig.primaryColor }}>
-                    {lead.email}
-                  </a>
+
+                {/* Contact data (2/3) */}
+                <div className="sm:w-2/3">
+                  <h3 className="text-lg font-bold mb-4" style={{ color: affiliateConfig.primaryColor }}>
+                    Ihre Kontaktdaten
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <User className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
+                      <span className="text-sm text-gray-500 w-20">Name:</span>
+                      <span className="text-gray-900 font-medium">{lead.name}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
+                      <span className="text-sm text-gray-500 w-20">Telefon:</span>
+                      <span className="text-gray-900 font-medium">{lead.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-5 h-5 flex-shrink-0" style={{ color: affiliateConfig.primaryColor }} />
+                      <span className="text-sm text-gray-500 w-20">E-Mail:</span>
+                      <a href={`mailto:${lead.email}`} className="font-medium" style={{ color: affiliateConfig.primaryColor }}>
+                        {lead.email}
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
