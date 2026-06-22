@@ -150,9 +150,6 @@ export default function CrmMockupPage() {
                       className="object-contain object-center"
                     />
                   </div>
-                  <span className="text-xs text-gray-500 text-center leading-tight">
-                    {product.productName}
-                  </span>
                 </div>
 
                 {/* Contact data (2/3) */}
