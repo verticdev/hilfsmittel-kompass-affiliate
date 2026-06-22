@@ -62,7 +62,7 @@ export default function CrmMockupPage() {
             style={{ backgroundColor: affiliateConfig.primaryColor }}
           >
             <h1 className="text-lg md:text-xl font-bold text-white leading-tight">
-              Ihre Anfrage ist in besten Händen
+              Ihre Anfrage zum Johanniter Hausnotruf
             </h1>
             <div className="flex items-center gap-2 flex-shrink-0">
               <Image
@@ -109,12 +109,6 @@ export default function CrmMockupPage() {
 
           {/* Main Content */}
           <div className="px-8 py-8">
-            {/* Title */}
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
-              Ihre Anfrage:{" "}
-              <span style={{ color: affiliateConfig.primaryColor }}>Hausnotruf</span>
-            </h2>
-
             {/* Greeting */}
             <p className="text-gray-700 mb-4 leading-relaxed">
               Guten Tag {lead.name},
