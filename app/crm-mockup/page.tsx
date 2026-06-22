@@ -100,9 +100,9 @@ export default function CrmMockupPage() {
               <p className="text-gray-700 leading-relaxed text-sm">
                 Sie haben Ihre Anfrage über den{" "}
                 <strong>{affiliateConfig.partnerName} Hilfsmittel-Kompass</strong> gestellt. Ab jetzt übernimmt{" "}
-                <strong style={{ color: affiliateConfig.primaryColor }}>Senioren Focus</strong> – Ihr
-                spezialisierter Partner für Hausnotruf – die persönliche Betreuung Ihrer Anfrage. Gemeinsam
-                sorgen wir dafür, dass Sie schnell und unkompliziert den passenden Hausnotruf erhalten.
+                <strong style={{ color: affiliateConfig.primaryColor }}>Senioren Focus</strong> – unser
+                spezialisierter Partner für Hausnotrufsysteme. Gemeinsam sorgen wir dafür, dass Sie den
+                passenden Hausnotruf erhalten.
               </p>
             </div>
           </div>
@@ -252,8 +252,7 @@ export default function CrmMockupPage() {
                   className="w-10 h-10"
                 />
                 <span className="text-sm font-medium text-gray-700">
-                  Bearbeitet von Senioren Focus – in Partnerschaft mit {affiliateConfig.partnerName}{" "}
-                  Hilfsmittel-Kompass
+                  Bearbeitet von Senioren Focus – in Partnerschaft mit {affiliateConfig.partnerName}
                 </span>
               </div>
             </div>
